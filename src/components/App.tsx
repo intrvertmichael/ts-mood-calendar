@@ -5,16 +5,16 @@ import './App.css';
 import Head from './head';
 
 function App() {
-  let name:string = 'michael';
-
-  const pro = {
-    name : {name},
-    lang : 'typescript'
-  }
+  const myName:string = 'michael';
+  const myAge:number = 30;
 
   return (
     <div className="App">
-      <Head pro={pro} />
+      <Head
+        name={myName}
+        age={myAge}
+        speak={(a)=> console.log(a)}
+      />
     </div>
   );
 }
