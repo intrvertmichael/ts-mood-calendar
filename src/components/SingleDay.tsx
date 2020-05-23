@@ -1,13 +1,13 @@
 import React from 'react';
 import './SingleDay.css';
 
-interface DayDetails {
+interface SingleDayDetails {
   key: number,
   i: number,
   starts:number
 }
 
-const Day:React.FC<DayDetails> = (props) =>{
+const SingleDay:React.FC<SingleDayDetails> = (props) =>{
   let classes = 'single-day ';
   const currentDay = new Date().getDate();
   let dayNum:number = 0;
@@ -33,4 +33,4 @@ const Day:React.FC<DayDetails> = (props) =>{
 }
 
 
-export default Day;
+export default SingleDay;

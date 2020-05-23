@@ -1,22 +1,30 @@
 import React from 'react';
 import './Calendar.css';
+import { connect } from 'react-redux';
 
 import Header from './Header';
 import Days from './Days';
-import {CalendarDetails, MonthDetails} from './_interfaces';
+import {CalendarDetails, MonthDetails} from './_calendar_types';
+import {setCurrentMonth} from '../redux/actions';
 
 
-const Calendar:React.FC = () =>{
+const Calendar:React.FC = (props:any) =>{
+  console.log(props.counter);
 
   const cal:CalendarDetails = setupCalendar();
 
   return (
     <div className='calendar'>
+      <button onClick={()=>props.setCurrentMonth(5)}>something</button>
+
       <Header month={cal.month.name} year={cal.year} />
       <Days month={cal.month}/>
     </div>
   )
 }
+
+
+
 
 const setupCalendar = ():CalendarDetails =>{
 
@@ -47,4 +55,26 @@ const setupCalendar = ():CalendarDetails =>{
   return {month:m, year:y};
 }
 
-export default Calendar;
+
+
+interface mapStateToPropsDetails{
+  counter:number
+}
+
+const mapStateToProps = (state:mapStateToPropsDetails) => {
+  return {
+    counter: state
+  }
+}
+
+interface mapDispatchToPropsDetails{
+}
+
+const mapDispatchToProps= (dispatch:any) => {
+  return {
+    setCurrentMonth: () => dispatch(setCurrentMonth(5))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

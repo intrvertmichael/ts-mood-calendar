@@ -1,6 +1,6 @@
 import React from 'react';
 import './Days.css';
-import {MonthDetails} from './_interfaces';
+import {MonthDetails} from './_calendar_types';
 
 import Day from './SingleDay';
 
@@ -22,7 +22,7 @@ const Days:React.FC<DaysDetails> = (props) =>{
   }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   return (
     <div className='days'>
       {daysArray}
