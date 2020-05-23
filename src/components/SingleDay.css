@@ -1,12 +1,20 @@
-.single-day {
-  border: 1px solid green;
-  width: 14.28%;
+.single-day, .not-day {
+  border-top: 1px solid green;
+  border-right: 1px solid green;
+  width: calc( 100% * (1/7) );
   padding: 20px 10px;
   box-sizing: border-box;
+}
 
+.single-day{
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+.single-day:hover {
+  background: #fafff6;
 }
 
 .currentDay {

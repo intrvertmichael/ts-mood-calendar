@@ -4,24 +4,33 @@ import './SingleDay.css';
 interface DayDetails {
   key: number,
   i: number,
-  name: string
+  starts:number
 }
 
 const Day:React.FC<DayDetails> = (props) =>{
   let classes = 'single-day ';
-
   const currentDay = new Date().getDate();
-  if(currentDay===props.i){
-    classes += 'currentDay ';
+  let dayNum:number = 0;
+
+  if(props.i && props.starts){
+    dayNum = props.i - props.starts;
+
+    if( currentDay===dayNum ){
+      classes += 'currentDay ';
+    }
   }
 
-  console.log(classes);
+  const dayClicked = () =>{
+    console.log(`day ${dayNum} clicked`);
+  }
+
 
   return (
-    <div className={classes}>
-      {props.i}
+    <div className={classes} onClick={()=>dayClicked()}>
+      {dayNum>0? dayNum : ''}
     </div>
   )
 }
+
 
 export default Day;
