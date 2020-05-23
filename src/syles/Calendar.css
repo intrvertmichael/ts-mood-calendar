@@ -6,3 +6,9 @@
   border: 2px solid green;
   overflow: hidden;
 }
+
+.btn {
+  padding: 10px 30px;
+  box-sizing: border-box;
+  margin: auto;
+}

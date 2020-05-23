@@ -1,5 +1,5 @@
 import React from 'react';
-import './Days.css';
+import '../syles/Days.css';
 import {MonthDetails} from './_calendar_types';
 
 import Day from './SingleDay';

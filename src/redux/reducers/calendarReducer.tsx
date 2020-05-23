@@ -2,6 +2,7 @@
 
 // REDUCER
 const initial = {
+  counter:0,
   year2020:{}
 }
 
@@ -9,9 +10,10 @@ interface ActionDetails {
   type:string
 }
 
-const currentReducer = ( state = initial, action:ActionDetails) => {
+const calendarReducer = ( state = initial, action:ActionDetails) => {
   switch(action.type) {
-    case 'SYNC_REDUX_FIREBASE_CALENDARS':
+    case 'ADD':
+      state.counter++
       return state;
 
     default:
@@ -19,4 +21,4 @@ const currentReducer = ( state = initial, action:ActionDetails) => {
   }
 }
 
-export default currentReducer;
+export default calendarReducer;

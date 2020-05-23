@@ -1,5 +1,5 @@
 import React from 'react';
-import './SingleDay.css';
+import '../syles/SingleDay.css';
 
 interface SingleDayDetails {
   key: number,

@@ -4,11 +4,11 @@ import { combineReducers } from 'redux';
 // import { firebaseReducer } from 'react-redux-firebase';
 
 // import calendarReducer from './calendarReducer';
-import currentReducer from './currentReducer';
+import calendarReducer from './calendarReducer';
 
 export default combineReducers({
-  current: currentReducer,
-  // calendar: calendarReducer,
+  current: calendarReducer,
+
   // firestore: firestoreReducer,
   // firebase: firebaseReducer
 });

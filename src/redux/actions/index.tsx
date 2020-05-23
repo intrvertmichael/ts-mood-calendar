@@ -8,3 +8,7 @@ export const setCurrentMonth = (month:number) => {
 export const setCurrentDay = (day:number) => {
   return { type: 'SET_CURRENT_DAY', day: day};
 }
+
+export const plus = () =>{
+  return {type: 'ADD'}
+}
