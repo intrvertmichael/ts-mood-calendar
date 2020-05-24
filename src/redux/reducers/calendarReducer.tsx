@@ -13,7 +13,11 @@ interface ActionDetails {
 const calendarReducer = ( state = initial, action:ActionDetails) => {
   switch(action.type) {
     case 'ADD':
-      state.counter++
+      state.counter++;
+      return state;
+
+    case 'MINUS':
+      state.counter--;
       return state;
 
     default:
