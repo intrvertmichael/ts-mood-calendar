@@ -12,7 +12,6 @@ import {CalendarDetails} from './_calendar_types';
 
 const Calendar:React.FC = (props:any) => {
   const cal:CalendarDetails = setupCalendar();
-
   return (
     <div className='calendar'>
       <Header month={cal.month.name} year={cal.year} />
@@ -30,6 +29,7 @@ interface mapStateToPropsDetails{
 }
 
 const mapStateToProps = (state:mapStateToPropsDetails) => {
+  // console.log(state);
   return {
     counter: state
   }

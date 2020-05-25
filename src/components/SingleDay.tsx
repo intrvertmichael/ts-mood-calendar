@@ -37,8 +37,8 @@ const SingleDay = (props:any) =>{
   )
 }
 
-
-
+// PROPS
+// - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 interface mapStateToPropsDetails{
   counter:number
