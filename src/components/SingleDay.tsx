@@ -1,19 +1,25 @@
+
 import React from 'react';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
+import {cal} from '../redux/actions';
+
 import '../syles/SingleDay.css';
 
 interface SingleDayDetails {
   key: number,
-  i: number,
+  pos: number,
   starts:number
 }
 
-const SingleDay:React.FC<SingleDayDetails> = (props) =>{
+const SingleDay = (props:any) =>{
+
   let classes = 'single-day ';
   const currentDay = new Date().getDate();
   let dayNum:number = 0;
 
-  if(props.i && props.starts){
-    dayNum = props.i - props.starts;
+  if(props.pos && props.starts){
+    dayNum = props.pos - props.starts;
 
     if( currentDay===dayNum ){
       classes += 'currentDay ';
@@ -21,9 +27,8 @@ const SingleDay:React.FC<SingleDayDetails> = (props) =>{
   }
 
   const dayClicked = () =>{
-    console.log(`day ${dayNum} clicked`);
+    props.cal();
   }
-
 
   return (
     <div className={classes} onClick={()=>dayClicked()}>
@@ -33,4 +38,22 @@ const SingleDay:React.FC<SingleDayDetails> = (props) =>{
 }
 
 
-export default SingleDay;
+
+
+interface mapStateToPropsDetails{
+  counter:number
+}
+
+const mapStateToProps = (state:mapStateToPropsDetails) => {
+  return {
+    counter: state
+  }
+}
+
+const mapDispatchToProps= (dispatch:Dispatch) => {
+  return {
+    cal: () => dispatch(cal())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleDay);
