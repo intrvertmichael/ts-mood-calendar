@@ -2,7 +2,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {cal} from '../redux/actions';
+import {addDay, triggerModal} from '../redux/actions';
 
 import '../syles/SingleDay.css';
 
@@ -11,6 +11,8 @@ interface SingleDayDetails {
   pos: number,
   starts:number
 }
+
+enum mood { bad=1, notsogood=2, okay=3, good=4 };
 
 const SingleDay = (props:any) =>{
 
@@ -27,7 +29,9 @@ const SingleDay = (props:any) =>{
   }
 
   const dayClicked = () =>{
-    props.cal();
+    console.log(mood.good);
+    props.addDay(dayNum);
+    props.triggerModal();
   }
 
   return (
@@ -38,7 +42,7 @@ const SingleDay = (props:any) =>{
 }
 
 // PROPS
-// - - - - - - - - - - - - - - - - - - - - - - - - - 
+// - - - - - - - - - - - - - - - - - - - - - - - - -
 
 interface mapStateToPropsDetails{
   counter:number
@@ -52,7 +56,8 @@ const mapStateToProps = (state:mapStateToPropsDetails) => {
 
 const mapDispatchToProps= (dispatch:Dispatch) => {
   return {
-    cal: () => dispatch(cal())
+    addDay: (dayNum:number) => dispatch(addDay(dayNum)),
+    triggerModal: () => dispatch(triggerModal())
   }
 }
 

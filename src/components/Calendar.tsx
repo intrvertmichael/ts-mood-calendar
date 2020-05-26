@@ -6,7 +6,6 @@ import {Dispatch} from 'redux';
 import Header from './Header';
 import Days from './Days';
 import setupCalendar from './CalendarSetup';
-
 import {CalendarDetails} from './_calendar_types';
 
 
@@ -25,13 +24,14 @@ const Calendar:React.FC = (props:any) => {
 
 
 interface mapStateToPropsDetails{
-  counter:number
+  current:object,
+  calendar:object
 }
 
 const mapStateToProps = (state:mapStateToPropsDetails) => {
-  // console.log(state);
+  console.log(state);
   return {
-    counter: state
+    calendar: state
   }
 }
 
