@@ -3,11 +3,11 @@ import '../syles/Modal.css';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 
-import {triggerModal} from '../redux/actions';
+import {resetCurrent} from '../redux/actions/currentActions';
 
 
 interface ModalDetails {
-  triggerModal:()=>void
+  resetCurrent:()=>void
 }
 
 const Modal:React.FC<ModalDetails> = (props) => {
@@ -15,8 +15,8 @@ const Modal:React.FC<ModalDetails> = (props) => {
   return (
     <div className='modal-container'>
       <div className='modal'>
-        <button onClick={()=>props.triggerModal()}> close </button>
-        <div>
+        <button className='modal-btn' onClick={()=>props.resetCurrent()}> X </button>
+        <div className='modal-content'>
           modal
         </div>
       </div>
@@ -31,7 +31,7 @@ const mapStateToProps = (state:object) =>{
 
 const mapDispatchToProps= (dispatch:Dispatch) => {
   return {
-    triggerModal: () => dispatch(triggerModal())
+    resetCurrent: () => dispatch(resetCurrent())
   }
 }
 

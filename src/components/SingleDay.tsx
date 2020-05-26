@@ -2,7 +2,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {addDay, triggerModal} from '../redux/actions';
+// import {addDay} from '../redux/actions/calendarActions';
+import {updateCurrenDay} from '../redux/actions/currentActions';
 
 import '../syles/SingleDay.css';
 
@@ -30,8 +31,8 @@ const SingleDay = (props:any) =>{
 
   const dayClicked = () =>{
     console.log(mood.good);
-    props.addDay(dayNum);
-    props.triggerModal();
+    // props.addDay(dayNum);
+    props.updateCurrenDay(dayNum);
   }
 
   return (
@@ -56,8 +57,7 @@ const mapStateToProps = (state:mapStateToPropsDetails) => {
 
 const mapDispatchToProps= (dispatch:Dispatch) => {
   return {
-    addDay: (dayNum:number) => dispatch(addDay(dayNum)),
-    triggerModal: () => dispatch(triggerModal())
+    updateCurrenDay: (dayNum:number) => dispatch(updateCurrenDay(dayNum))
   }
 }
 

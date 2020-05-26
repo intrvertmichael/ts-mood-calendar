@@ -14,7 +14,3 @@ export const addDay:any = (dayNum:number) =>{
     console.log(getState());
   }
 }
-
-export const triggerModal:any = () => {
-  return (dispatch:Dispatch, getState:()=>{}) => dispatch({type: 'UPDATE_MODAL'})
-}

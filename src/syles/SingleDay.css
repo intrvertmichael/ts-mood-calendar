@@ -2,7 +2,8 @@
   border-top: 1px solid green;
   border-right: 1px solid green;
   width: calc( 100% * (1/7) );
-  padding: 20px 10px;
+  height: calc( 100% * (1/6));
+  /* padding: 20px 10px; */
   box-sizing: border-box;
 }
 

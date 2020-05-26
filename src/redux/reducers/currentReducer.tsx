@@ -1,13 +1,11 @@
 
-import {setIn} from 'immutable';
+import {setIn, merge} from 'immutable';
 
 const initial = {
   modalOpen: false,
   year:null,
   month:null,
-  day:null,
-  mood:null,
-  message:null
+  day:null
 }
 
 interface CurrentReducerDetails {
@@ -15,18 +13,27 @@ interface CurrentReducerDetails {
   modalOpen:boolean,
   year:number,
   month:number,
-  day:number,
-  mood:number,
-  message:number
+  day:number
 }
 
 const currentReducer = (state = initial, action:CurrentReducerDetails) => {
   switch(action.type) {
+
     case 'UPDATE_MODAL':
       return setIn(state, ['modalOpen'], !state.modalOpen);
 
+    case 'UPDATE_CURRENT_MONTH':
+      return setIn(state, ['month'], action.month);
+
+    case 'UPDATE_CURRENT_DAY':
+      return setIn(state, ['day'], action.day);
+
+    case 'RESET_CURRENT':
+      return merge(state, { modalOpen:false, day:null })
+
     default:
       return state;
+
   }
 }
 
