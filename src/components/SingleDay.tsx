@@ -1,19 +1,16 @@
 
 import React from 'react';
+import '../syles/SingleDay.css';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-// import {addDay} from '../redux/actions/calendarActions';
 import {updateCurrenDay} from '../redux/actions/currentActions';
-
-import '../syles/SingleDay.css';
+import {AppStateDetails} from './_calendar_types';
 
 interface SingleDayDetails {
   key: number,
   pos: number,
   starts:number
 }
-
-enum mood { bad=1, notsogood=2, okay=3, good=4 };
 
 const SingleDay = (props:any) =>{
 
@@ -30,8 +27,6 @@ const SingleDay = (props:any) =>{
   }
 
   const dayClicked = () =>{
-    console.log(mood.good);
-    // props.addDay(dayNum);
     props.updateCurrenDay(dayNum);
   }
 
@@ -42,14 +37,7 @@ const SingleDay = (props:any) =>{
   )
 }
 
-// PROPS
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-
-interface mapStateToPropsDetails{
-  counter:number
-}
-
-const mapStateToProps = (state:mapStateToPropsDetails) => {
+const mapStateToProps = (state:AppStateDetails) => {
   return {
     counter: state
   }

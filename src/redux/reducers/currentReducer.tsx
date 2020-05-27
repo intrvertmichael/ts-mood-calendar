@@ -1,22 +1,15 @@
 
 import {setIn, merge} from 'immutable';
+import {CurrentReducerDetails} from '../../components/_calendar_types';
 
-const initial = {
+const initialState = {
   modalOpen: false,
-  year:null,
+  year:2020,
   month:null,
   day:null
 }
 
-interface CurrentReducerDetails {
-  type:string,
-  modalOpen:boolean,
-  year:number,
-  month:number,
-  day:number
-}
-
-const currentReducer = (state = initial, action:CurrentReducerDetails) => {
+const currentReducer = (state = initialState, action:CurrentReducerDetails) => {
   switch(action.type) {
 
     case 'UPDATE_MODAL':

@@ -6,37 +6,33 @@ import {Dispatch} from 'redux';
 import Header from './Header';
 import Days from './Days';
 import setupCalendar from './CalendarSetup';
-import {CalendarDetails} from './_calendar_types';
-
+import {updateCurrentMonth} from '../redux/actions/currentActions';
+import {AppStateDetails, MonthDetails} from './_calendar_types';
 
 const Calendar:React.FC = (props:any) => {
-  const cal:CalendarDetails = setupCalendar();
+
+  const mon:MonthDetails = setupCalendar();
+  props.updateCurrentMonth(mon.num);
+
   return (
     <div className='calendar'>
-      <Header month={cal.month.name} year={cal.year} />
-      <Days month={cal.month}/>
+      <Header month={mon.name} year={props.year} />
+      <Days month={ mon }/>
     </div>
   )
 }
 
-
-
-
-
-interface mapStateToPropsDetails{
-  current:object,
-  calendar:object
-}
-
-const mapStateToProps = (state:mapStateToPropsDetails) => {
+const mapStateToProps = (state:AppStateDetails) => {
   console.log(state);
   return {
-    calendar: state
+    year: state.current.year
   }
 }
 
 const mapDispatchToProps= (dispatch:Dispatch) => {
-  return { }
+  return {
+    updateCurrentMonth: (monthNum:number) => dispatch(updateCurrentMonth(monthNum))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

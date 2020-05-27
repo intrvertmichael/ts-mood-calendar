@@ -1,9 +1,8 @@
-import {CalendarDetails, MonthDetails} from './_calendar_types';
+import {MonthDetails} from './_calendar_types';
 
+const setupCalendar = ():MonthDetails =>{
 
-const setupCalendar = ():CalendarDetails =>{
-
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
 
   // enter firebase check here
@@ -24,10 +23,9 @@ const setupCalendar = ():CalendarDetails =>{
     { num:11, name:'December',  length:31, starts:2, days:{} }
   ];
 
-  const m = months2020[currentMonth];
-  const y = currentYear;
+  // const y = currentYear;
 
-  return {month:m, year:y};
+  return months2020[currentMonth];
 }
 
 
