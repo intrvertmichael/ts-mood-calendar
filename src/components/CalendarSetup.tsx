@@ -1,9 +1,10 @@
+
 import {MonthDetails} from './_calendar_types';
 
-const setupCalendar = ():MonthDetails =>{
+const setupCalendar = (): MonthDetails =>{
 
-  // const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+  // const todaysYear = new Date().getFullYear();
+  const todaysMonth = new Date().getMonth();
 
   // enter firebase check here
   // if doesnt exist on firebase then set the defaults to the saved defaults
@@ -23,10 +24,8 @@ const setupCalendar = ():MonthDetails =>{
     { num:11, name:'December',  length:31, starts:2, days:{} }
   ];
 
-  // const y = currentYear;
-
-  return months2020[currentMonth];
+  // props.addYear = todaysYear;
+  return months2020[todaysMonth];
 }
-
 
 export default setupCalendar;

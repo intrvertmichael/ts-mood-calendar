@@ -7,17 +7,19 @@ import Header from './Header';
 import Days from './Days';
 import setupCalendar from './CalendarSetup';
 import {updateCurrentMonth} from '../redux/actions/currentActions';
+import {addMonth} from '../redux/actions/calendarActions';
 import {AppStateDetails, MonthDetails} from './_calendar_types';
 
 const Calendar:React.FC = (props:any) => {
 
-  const mon:MonthDetails = setupCalendar();
-  props.updateCurrentMonth(mon.num);
+  const month:MonthDetails = setupCalendar();
+  props.updateCurrentMonth(month.num);
+  props.addMonth(month);
 
   return (
     <div className='calendar'>
-      <Header month={mon.name} year={props.year} />
-      <Days month={ mon }/>
+      <Header month={month.name} year={props.year} />
+      <Days month={ month }/>
     </div>
   )
 }
@@ -31,7 +33,8 @@ const mapStateToProps = (state:AppStateDetails) => {
 
 const mapDispatchToProps= (dispatch:Dispatch) => {
   return {
-    updateCurrentMonth: (monthNum:number) => dispatch(updateCurrentMonth(monthNum))
+    updateCurrentMonth: (monthNum:number) => dispatch(updateCurrentMonth(monthNum)),
+    addMonth: (month:MonthDetails) => dispatch(addMonth(month)),
   }
 }
 
