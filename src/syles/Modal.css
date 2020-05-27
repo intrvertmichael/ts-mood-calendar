@@ -20,7 +20,8 @@
   border: 2px solid white;
   background: #202020;
   border-radius: 5px;
-  width: 600px;
+  max-width: 600px;
+  width:95%;
   color:white
 }
 
@@ -45,13 +46,17 @@
 }
 
 .message {
-  padding: 30px 0px;
+  font-size: 16px;
+  padding: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 }
 
 .mood-circles {
   display: flex;
   justify-content: space-between;
-  padding-top: 50px;
+  padding-top: 30px;
   box-sizing: border-box;
 }
 

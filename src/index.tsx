@@ -5,13 +5,29 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
-import {store} from './redux';
+import {store, firebaseConfig} from './redux';
+
+import firebase from 'firebase/app';
+import {createFirestoreInstance} from 'redux-firestore';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
+
+
+// REACT REDUX FIREBASE OPTIONS
+const rrfProps = {
+  firebase,
+  config: firebaseConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+};
+
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ReactReduxFirebaseProvider>
   </Provider>
   , document.getElementById('root')
 );

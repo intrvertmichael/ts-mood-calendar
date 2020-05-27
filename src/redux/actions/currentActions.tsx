@@ -1,6 +1,8 @@
 import {Dispatch} from 'redux';
 import {GetStateDetails} from '../../components/_calendar_types';
 
+// import {getFirestore, reduxFirestore} from 'redux-firestore';
+
 export const triggerModal:any = () => {
   return (dispatch:Dispatch, getState:GetStateDetails) => dispatch({type: 'UPDATE_MODAL'})
 }

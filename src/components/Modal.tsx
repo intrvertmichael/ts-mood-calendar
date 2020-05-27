@@ -13,7 +13,10 @@ const Modal:React.FC = (props:any) => {
   let storedMessage:string='';
 
   const circleClicked = (moodNum:number) => props.addMood(moodNum);
-  const messageClicked = () => props.addMessage('message DOES exist now');
+  const messageClicked = () => {
+    const response = prompt(`what was going on in ${props.currentMonth}/${props.currentDay}`);
+    props.addMessage(response);
+  };
 
   // get message and mood
   if(props.cal[`month${props.currentMonth}`]){
@@ -37,7 +40,7 @@ const Modal:React.FC = (props:any) => {
         <div className='modal-content'>
           <p className='date'> { storedMood!==0? storedMood: 'no number' } </p>
           <button className='message' onClick={ () => messageClicked() }>
-            { storedMessage!==''? storedMessage :'click here to add a reason why' }
+            { storedMessage!==''? storedMessage :'click here to add why' }
           </button>
         </div>
 
