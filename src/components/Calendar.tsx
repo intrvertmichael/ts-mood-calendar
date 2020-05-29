@@ -16,19 +16,32 @@ import {syncFirebase} from '../redux/actions/firebaseActions';
 
 const Calendar:React.FC = (props:any) => {
   useFirestoreConnect(`userCalendars`);
+
+  const todaysMonth = new Date().getMonth();
+  let month:MonthDetails;
+  if(props.firestore.data.userCalendars){
+    console.log('firestore is NOT empty');
+    console.log(props.firestore.data)
+    month = calendarCreation(todaysMonth);
+  } else {
+    console.log('->  firestore is empty or not loaded');
+    console.log('so we will show today\'s month');
+    month = calendarCreation(todaysMonth);
+  }
+
+  // this is the part i need to figure out.
+  // what order should the firebase sync happen
+  // and when return firebase then merge it with the local redux one
   const { addMonth,updateCurrentMonth,syncFirebase } = props;
   useEffect( () => {
-    console.log('inside of use effect');
-
-    const todaysMonth = new Date().getMonth();
-    // enter firebase check here
-    // if doesnt exist on firebase then set the defaults to the saved defaults
-    const month:MonthDetails = calendarCreation(todaysMonth);
-
+    console.log('->  inside of use effect');
     addMonth(month);
     updateCurrentMonth(month);
     syncFirebase();
-  }, [])
+  }, [] )
+  // by this time i need a month to do everything else with
+  // then the month will pass the details to the other components
+
 
   return (
     <div className='calendar'>
@@ -42,7 +55,9 @@ const mapStateToProps = (state:AppStateDetails) => {
   console.log(state);
   return {
     year: state.current.year,
-    month: state.current.month
+    month: state.current.month,
+    uid: state.firebase.auth.uid,
+    firestore: state.firestore
   }
 }
 

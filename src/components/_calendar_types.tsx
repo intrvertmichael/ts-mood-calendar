@@ -41,7 +41,13 @@ export type GetStateDetails = ()=>AppStateDetails;
 
 export interface AppStateDetails {
   current:CurrentReducerDetails,
-  calendar:CalendarDetails
+  calendar:CalendarDetails,
+  firebase:{
+    auth:{
+      uid:string
+    }
+  },
+  firestore:object
 }
 
 export interface CalendarReducerDetails {

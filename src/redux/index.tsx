@@ -22,8 +22,7 @@ export const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 
-const composeEnhancers = compose;
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
   reducer,
