@@ -2,12 +2,15 @@ import React from 'react';
 import {LogIn} from '../redux/actions/firebaseActions';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
+import './../syles/LogInPage.css'
 
 const LogInPage = (props:any) =>{
   return (
-    <div>
-      log in page
-      <button onClick={()=>props.LogIn()}>Log In</button>
+    <div className='login'>
+      <div className='login-message'>
+        log in page
+      </div>
+      <button  className='login-btn' onClick={()=>props.LogIn()}>Log In</button>
     </div>
   )
 }

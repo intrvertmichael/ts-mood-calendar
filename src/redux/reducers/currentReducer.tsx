@@ -1,11 +1,10 @@
-
 import {setIn, merge} from 'immutable';
 import {CurrentReducerDetails} from '../../components/_calendar_types';
 
 const initialState = {
   modalOpen: false,
   year:2020,
-  month:null,
+  month:{name:'michael'},
   day:null
 }
 

@@ -38,9 +38,7 @@ const SingleDay = (props:any) =>{
 }
 
 const mapStateToProps = (state:AppStateDetails) => {
-  return {
-    counter: state
-  }
+  return {}
 }
 
 const mapDispatchToProps= (dispatch:Dispatch) => {

@@ -17,3 +17,9 @@ export const LogOut:any = () => {
     firebase.auth().signOut().then(()=>console.log('Signed Out...'));
   }
 }
+
+export const syncFirebase:any = () => {
+  return (dispatch:Dispatch, getState:GetStateDetails, {getFirestore}:any) => {
+    // const firebase = getFirestore();
+  }
+}

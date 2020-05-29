@@ -7,7 +7,6 @@ import LogInPage from './components/LogInPage';
 
 import Modal from './components/Modal';
 
-
 function App(props:any) {
   return (
     <div className="container">

@@ -1,5 +1,5 @@
 import {Dispatch} from 'redux';
-import {GetStateDetails} from '../../components/_calendar_types';
+import {GetStateDetails, MonthDetails} from '../../components/_calendar_types';
 
 // import {getFirestore, reduxFirestore} from 'redux-firestore';
 
@@ -15,8 +15,8 @@ export const updateCurrentYear:any = (yearNum:number) => {
   return (dispatch:Dispatch, getState:GetStateDetails) => dispatch({ type: 'UPDATE_CURRENT_YEAR', year: yearNum})
 }
 
-export const updateCurrentMonth:any = (monthNum:number) => {
-  return (dispatch:Dispatch, getState:GetStateDetails) => dispatch({ type: 'UPDATE_CURRENT_MONTH', month: monthNum })
+export const updateCurrentMonth:any = (month:MonthDetails) => {
+  return (dispatch:Dispatch, getState:GetStateDetails) => dispatch({ type: 'UPDATE_CURRENT_MONTH', month: month })
 }
 
 export const updateCurrenDay:any = (dayNum:number) => {
