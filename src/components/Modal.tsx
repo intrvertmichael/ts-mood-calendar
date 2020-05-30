@@ -19,15 +19,14 @@ const Modal:React.FC = (props:any) => {
   };
 
   // get message and mood
-  if(props.cal[`month${props.currentMonth}`]){
-    if(props.cal[`month${props.currentMonth}`].days[`day${props.currentDay}`]) {
+  const monthOBj = props.cal[`month${props.currentMonth.num}`];
+  if(monthOBj){
+    if(monthOBj.days[`day${props.currentDay}`]) {
+      storedMood = monthOBj.days[`day${props.currentDay}`].mood ?
+      monthOBj.days[`day${props.currentDay}`].mood : 0 ;
 
-      storedMood = props.cal[`month${props.currentMonth}`].days[`day${props.currentDay}`].mood?
-      props.cal[`month${props.currentMonth}`].days[`day${props.currentDay}`].mood : 0 ;
-
-      storedMessage = props.cal[`month${props.currentMonth}`].days[`day${props.currentDay}`].message?
-      props.cal[`month${props.currentMonth}`].days[`day${props.currentDay}`].message : '' ;
-
+      storedMessage = monthOBj.days[`day${props.currentDay}`].message ?
+      monthOBj.days[`day${props.currentDay}`].message : '' ;
     }
   }
 

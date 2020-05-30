@@ -5,6 +5,7 @@ import {MonthDetails} from '../../components/_calendar_types';
 export const addMonth:any = (month:MonthDetails) =>{
   return (dispatch:Dispatch, getState:GetStateDetails) => {
     dispatch({ type:'CREATE_MONTH', monthName:`month${month.num}`, month:month });
+    console.log(getState());
   }
 }
 
@@ -12,7 +13,7 @@ export const addMood:any = (moodNum:number) =>{
   return (dispatch:Dispatch, getState:GetStateDetails) => {
     dispatch({
       type: 'CREATE_MOOD',
-      monthName:`month${getState().current.month}`,
+      monthName:`month${getState().current.month.num}`,
       dayName:`day${getState().current.day}`,
       mood:moodNum
     });
@@ -23,7 +24,7 @@ export const addMessage:any = (message:string) =>{
   return (dispatch:Dispatch, getState:GetStateDetails) => {
     dispatch({
       type: 'CREATE_MESSAGE',
-      monthName:`month${getState().current.month}`,
+      monthName:`month${getState().current.month.num}`,
       dayName:`day${getState().current.day}`,
       message:message
     });

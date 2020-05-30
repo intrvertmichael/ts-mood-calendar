@@ -25,17 +25,17 @@ export const syncFirebase:any = () => {
     const AllFirestoreCalendars = getState().firestore.data.userCalendars;
     const reduxCalendar = getState().calendar;
     const firestoreCalendar = AllFirestoreCalendars[firebaseAuth].stored;
-    const areCalendarEqual =  _.isEqual(reduxCalendar, firestoreCalendar);
+    const areCalendarsEqual =  _.isEqual(reduxCalendar, firestoreCalendar);
 
 
     // if the calendars are not equal then merge them
     // and reupload to firebase so they are equal
-    console.log('reduxCalendar', reduxCalendar);
-    console.log('firestoreCalendar', firestoreCalendar);
-    console.log( areCalendarEqual );
+    // console.log('reduxCalendar', reduxCalendar);
+    // console.log('firestoreCalendar', firestoreCalendar);
+    console.log( 'are calendars equal?', areCalendarsEqual );
     // const firebase = getFirestore();
     // dispatch({type:'SYNC_WITH_FIREBASE', calendar:firestoreCalendar});
-    console.log('after dispatch');
-    console.log(getState())
+    // console.log('after dispatch');
+    console.log(getState());
   }
 }
