@@ -6,7 +6,7 @@ import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import {resetCurrent} from '../redux/actions/currentActions';
 import {addMood, addMessage} from '../redux/actions/calendarActions';
-import {AppStateDetails} from './_calendar_types';
+import {AppStateDetails} from './_reducer_types';
 
 const Modal:React.FC = (props:any) => {
   let storedMood:number = 0;

@@ -3,7 +3,7 @@ import '../syles/Header.css';
 
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {AppStateDetails} from './_calendar_types';
+import {AppStateDetails} from './_reducer_types';
 import {LogOut} from '../redux/actions/firebaseActions';
 
 interface HeaderDetails {

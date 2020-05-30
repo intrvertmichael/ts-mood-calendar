@@ -1,5 +1,5 @@
 import {setIn, merge} from 'immutable';
-import {CurrentReducerDetails} from '../../components/_calendar_types';
+import {CurrentReducerDetails} from '../../components/_reducer_types';
 
 const initialState = {
   modalOpen: false,

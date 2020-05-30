@@ -1,5 +1,6 @@
 import {Dispatch} from 'redux';
-import {GetStateDetails, MonthDetails} from '../../components/_calendar_types';
+import {GetStateDetails} from '../../components/_reducer_types';
+import {MonthDetails} from '../../components/_calendar_types';
 
 export const addMonth:any = (month:MonthDetails) =>{
   return (dispatch:Dispatch, getState:GetStateDetails) => {

@@ -1,17 +1,40 @@
 
 import {mergeDeep} from 'immutable';
-import {CalendarReducerDetails} from '../../components/_calendar_types';
+import {CalendarReducerDetails} from '../../components/_reducer_types';
 
 const initialState = {
   year2020:{
-    month0:{ num:0, name:'January', length:31, starts:3, days:{day1:{mood:1}, day2:{mood:2}, day3:{mood:3}, day4:{mood:4}}},
-    month1:{ num:1, name:'February', length:28, starts:6, days:{} },
-    month2:{ num:2, name:'March', length:31, starts:0, days:{day11:{mood:1}, day12:{mood:2}, day13:{mood:3}, day14:{mood:4}}}
+    month0:{
+      num:0,
+      name:'January',
+      length:31,
+      starts:3,
+      days:{
+        day1:{mood:1}, day2:{mood:2}, day3:{mood:3}, day4:{mood:4}
+      }
+    },
+    month1:{
+      num:1,
+      name:'February',
+      length:28,
+      starts:6,
+      days:{}
+    },
+    month2:{
+      num:2,
+      name:'March',
+      length:31,
+      starts:0,
+      days:{
+        day11:{mood:1}, day12:{mood:2}, day13:{mood:3}, day14:{mood:4}
+      }
+    }
   }
 }
 
 const calendarReducer = (state = initialState, action:CalendarReducerDetails) => {
   switch(action.type) {
+
     case 'CREATE_MONTH':
       return mergeDeep(state, { year2020: { [action.monthName]: action.month }});
 
@@ -24,8 +47,12 @@ const calendarReducer = (state = initialState, action:CalendarReducerDetails) =>
     case 'CREATE_MESSAGE':
       return mergeDeep( state, { year2020: { [action.monthName]: { days: { [action.dayName]: { message: action.message }}}}} );
 
+    case 'SYNC_WITH_FIREBASE':
+      return mergeDeep(state, action.calendar);
+
     default:
       return state;
+
   }
 }
 

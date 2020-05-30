@@ -4,7 +4,7 @@ import '../syles/SingleDay.css';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {updateCurrenDay} from '../redux/actions/currentActions';
-import {AppStateDetails} from './_calendar_types';
+import {AppStateDetails} from './_reducer_types';
 
 interface SingleDayDetails {
   key: number,

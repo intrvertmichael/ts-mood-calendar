@@ -1,6 +1,7 @@
 
 import {Dispatch} from 'redux';
-import {GetStateDetails} from '../../components/_calendar_types';
+import {GetStateDetails} from '../../components/_reducer_types';
+import _ from 'lodash';
 
 export const LogIn:any = () => {
   return (dispatch:Dispatch, getState:GetStateDetails, {getFirebase}:any) => {
@@ -20,6 +21,21 @@ export const LogOut:any = () => {
 
 export const syncFirebase:any = () => {
   return (dispatch:Dispatch, getState:GetStateDetails, {getFirestore}:any) => {
+    const firebaseAuth:string = getState().firebase.auth.uid;
+    const AllFirestoreCalendars = getState().firestore.data.userCalendars;
+    const reduxCalendar = getState().calendar;
+    const firestoreCalendar = AllFirestoreCalendars[firebaseAuth].stored;
+    const areCalendarEqual =  _.isEqual(reduxCalendar, firestoreCalendar);
+
+
+    // if the calendars are not equal then merge them
+    // and reupload to firebase so they are equal
+    console.log('reduxCalendar', reduxCalendar);
+    console.log('firestoreCalendar', firestoreCalendar);
+    console.log( areCalendarEqual );
     // const firebase = getFirestore();
+    // dispatch({type:'SYNC_WITH_FIREBASE', calendar:firestoreCalendar});
+    console.log('after dispatch');
+    console.log(getState())
   }
 }
