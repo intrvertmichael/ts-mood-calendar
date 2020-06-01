@@ -4,18 +4,7 @@ export interface CalendarDetails {
 }
 
 export interface YearDetails {
-  month0:MonthDetails,
-  month1:MonthDetails,
-  month2:MonthDetails,
-  month3:MonthDetails,
-  month4:MonthDetails,
-  month5:MonthDetails,
-  month6:MonthDetails,
-  month7:MonthDetails,
-  month8:MonthDetails,
-  month9:MonthDetails,
-  month10:MonthDetails,
-  month11:MonthDetails
+  [key: string]: MonthDetails
 }
 
 export interface MonthDetails {

@@ -5,7 +5,7 @@ import {MonthDetails} from '../../components/_calendar_types';
 export const addMonth:any = (month:MonthDetails) =>{
   return (dispatch:Dispatch, getState:GetStateDetails) => {
     dispatch({ type:'CREATE_MONTH', monthName:`month${month.num}`, month:month });
-    console.log(getState());
+    // console.log(getState());
   }
 }
 

@@ -8,7 +8,9 @@ export interface AppStateDetails {
   calendar:CalendarDetails,
   firebase:{
     auth:{
-      uid:string
+      uid:string,
+      displayName:string,
+      email:string
     }
   },
   firestore:{

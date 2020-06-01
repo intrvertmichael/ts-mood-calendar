@@ -1,10 +1,13 @@
 import React from 'react';
 import '../syles/Days.css';
 import {MonthDetails} from './_calendar_types';
+import {AppStateDetails} from './_reducer_types';
 import SingleDay from './SingleDay';
+import {connect} from 'react-redux';
 
 interface DaysDetails {
   month: MonthDetails;
+  labeledDays:{}
 }
 
 const Days:React.FC<DaysDetails> = (props) =>{
@@ -21,12 +24,28 @@ const Days:React.FC<DaysDetails> = (props) =>{
 
   for(let i=0; i < calendarSize ; i++){
     if( i > props.month.starts && i<props.month.length+props.month.starts){
+
+      // find if i has a mood or message
+      let moodNum:number = 0;
+      if(props.labeledDays){
+        const labeledDaysArray = Object.keys(props.labeledDays);
+        labeledDaysArray.map(labeledDay => {
+          const calendarDay = i - props.month.starts;
+          if(`day${calendarDay}` === labeledDay){
+            console.log(labeledDay)
+            // if(props.labeledDays[`day${calendarDay}`].num)
+            moodNum = 4;
+          }
+        });
+      }
+
+      // create the day
       daysArray.push(
       <SingleDay
         key = {i}
         pos = {i}
         starts = {props.month.starts}
-        // mood = {moodNum}
+        mood = {moodNum>0? moodNum : null}
         // message = {moodMessage}
       />);
     }
@@ -36,4 +55,10 @@ const Days:React.FC<DaysDetails> = (props) =>{
   return ( <div className='days'> {daysArray} </div> )
 }
 
-export default Days;
+const mapStateToProps = (state:AppStateDetails) =>{
+  return {
+    labeledDays: state.current.month.days
+  }
+}
+
+export default connect(mapStateToProps)(Days);

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import '../syles/Calendar.css';
+
 import { connect } from 'react-redux';
 import {Dispatch} from 'redux';
 import { useFirestoreConnect } from 'react-redux-firebase';
@@ -15,27 +16,31 @@ import {addMonth} from '../redux/actions/calendarActions';
 import {syncFirebase} from '../redux/actions/firebaseActions';
 
 const Calendar:React.FC = (props:any) => {
-  const { addMonth,updateCurrentMonth } = props;
   useFirestoreConnect(`userCalendars`);
 
-  // when calendar starts sets blank today's month
+  // when calendar starts show default today's month
+  const { addMonth,updateCurrentMonth } = props;
   useEffect( () => {
     const todaysMonth = new Date().getMonth();
     let month:MonthDetails = calendarCreation(todaysMonth);
     addMonth(month);
     updateCurrentMonth(month);
-  }, [addMonth, updateCurrentMonth] )
+    console.log('-> Default month loaded');
+  }, [addMonth, updateCurrentMonth] );
 
 
   // Did firestore get loaded ?
-  if(props.firestore.data.userCalendars){
-    console.log('-> firestore is Loaded');
-    syncFirebase();
-  } 
-  else {
-    console.log('firestore is empty');
-    // month = calendarCreation(todaysMonth);
-  }
+  useEffect( () =>{
+    console.log('inside of firestore loaded');
+    if(props.firestore.data.userCalendars){
+      if(props.month.num){
+        console.log('yafiraaaaa', props.month.num);
+        props.syncFirebase(props.month.num);
+      }
+    }
+    else { console.log('firestore is empty') }
+  }, [props]);
+
 
 
   return (
@@ -47,7 +52,7 @@ const Calendar:React.FC = (props:any) => {
 }
 
 const mapStateToProps = (state:AppStateDetails) => {
-  console.log('rendering calendar');
+  console.log('-> Calendar is loaded');
   console.log('state', state);
   return {
     year: state.current.year,
@@ -61,7 +66,7 @@ const mapDispatchToProps= (dispatch:Dispatch) => {
   return {
     updateCurrentMonth: (monthNum:number) => dispatch(updateCurrentMonth(monthNum)),
     addMonth: (month:MonthDetails) => dispatch(addMonth(month)),
-    syncFirebase: () => dispatch(syncFirebase())
+    syncFirebase: (monthNum:number) => dispatch(syncFirebase(monthNum))
   }
 }
 

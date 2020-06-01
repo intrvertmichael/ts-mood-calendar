@@ -1,7 +1,9 @@
 
 import {Dispatch} from 'redux';
 import {GetStateDetails} from '../../components/_reducer_types';
+import {MonthDetails} from '../../components/_calendar_types';
 import _ from 'lodash';
+import {mergeDeep} from 'immutable';
 
 export const LogIn:any = () => {
   return (dispatch:Dispatch, getState:GetStateDetails, {getFirebase}:any) => {
@@ -19,23 +21,42 @@ export const LogOut:any = () => {
   }
 }
 
-export const syncFirebase:any = () => {
+export const syncFirebase:any = (monthNum:number) => {
+  console.log('#^&$^%&$^%^%& times inside of sync firebase');
+  console.log(monthNum);
+
   return (dispatch:Dispatch, getState:GetStateDetails, {getFirestore}:any) => {
     const firebaseAuth:string = getState().firebase.auth.uid;
-    const AllFirestoreCalendars = getState().firestore.data.userCalendars;
     const reduxCalendar = getState().calendar;
-    const firestoreCalendar = AllFirestoreCalendars[firebaseAuth].stored;
+    const firestoreCalendar = getState().firestore.data.userCalendars[firebaseAuth].stored;
     const areCalendarsEqual =  _.isEqual(reduxCalendar, firestoreCalendar);
 
+    if(!areCalendarsEqual){
+      console.log(areCalendarsEqual, ' the calendars are NOT equal. ')
+      const mergedCalendars:any = mergeDeep(firestoreCalendar, reduxCalendar);
+      const firestore = getFirestore();
 
-    // if the calendars are not equal then merge them
-    // and reupload to firebase so they are equal
-    // console.log('reduxCalendar', reduxCalendar);
-    // console.log('firestoreCalendar', firestoreCalendar);
-    console.log( 'are calendars equal?', areCalendarsEqual );
-    // const firebase = getFirestore();
-    // dispatch({type:'SYNC_WITH_FIREBASE', calendar:firestoreCalendar});
-    // console.log('after dispatch');
-    console.log(getState());
+      const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
+
+      console.log('%$%^%$^daggsdasffsdsdffdsdfasdas');
+      console.log(monthNum);
+      console.log(cur, mergedCalendars);
+
+      // post merged on firestore
+      firestore.collection('userCalendars').doc(firebaseAuth).set({
+          stored: mergedCalendars,
+          displayName: getState().firebase.auth.displayName,
+          email: getState().firebase.auth.email,
+          lastUpdateAt: new Date()
+      })
+      .then( ()=> console.log('-> Firestore was updated') )
+      .catch( () => console.log('Not able to update Firestore') )
+
+      // post merged on redux
+      dispatch({type:'SYNC_WITH_FIREBASE', calendar:mergedCalendars});
+      dispatch({type:'UPDATE_CURRENT_MONTH', month:cur });
+    } else {
+      console.log(areCalendarsEqual, ' the calendars are equal everything is good. ')
+    }
   }
 }

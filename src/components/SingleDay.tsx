@@ -24,6 +24,10 @@ const SingleDay = (props:any) =>{
     if( currentDay===dayNum ){
       classes += 'currentDay ';
     }
+
+    if(props.mood !== null){
+      classes += `mood${props.mood}`
+    }
   }
 
   const dayClicked = () =>{
