@@ -46,23 +46,47 @@ export const syncFirebase: any = (monthNum: number) => {
 		const areCalendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
 		if (!areCalendarsEqual) {
-			const mergedCalendars: any = mergeDeep(firestoreCalendar, reduxCalendar);
+			dispatch({ type: 'FIREBASE_LOADED' });
+
+			console.log(
+				'when first starts this should be blank?',
+				getState().current.timesFirestoreLoaded
+			);
+
+			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
 			const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
 
-			firestore
-				.collection('userCalendars')
-				.doc(firebaseAuth)
-				.set({
-					stored: mergedCalendars,
-					displayName: getState().firebase.auth.displayName,
-					email: getState().firebase.auth.email,
-					lastUpdateAt: new Date(),
-				})
-				.then(() => console.log('-> Firestore was updated'))
-				.catch(() => console.log('Not able to update Firestore'));
+			if (getState().current.timesFirestoreLoaded === 1) {
+				firestore
+					.collection('userCalendars')
+					.doc(firebaseAuth)
+					.set({
+						stored: mergedCalendars,
+						displayName: getState().firebase.auth.displayName,
+						email: getState().firebase.auth.email,
+						lastUpdateAt: new Date(),
+					})
+					.then(() => console.log('-> Firestore was synced'))
+					.catch(() => console.log('Not able to sync Firestore'));
 
-			dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
+				dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
+			} else {
+				firestore
+					.collection('userCalendars')
+					.doc(firebaseAuth)
+					.set({
+						stored: reduxCalendar,
+						displayName: getState().firebase.auth.displayName,
+						email: getState().firebase.auth.email,
+						lastUpdateAt: new Date(),
+					})
+					.then(() => console.log('-> Redux calendar was posted on Firestore'))
+					.catch(() => console.log('Not able to post to Firestore'));
+
+				// dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
+			}
+
 			dispatch({ type: 'UPDATE_CURRENT_MONTH', month: cur });
 		} else {
 		}

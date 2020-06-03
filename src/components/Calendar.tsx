@@ -21,6 +21,8 @@ const Calendar: React.FC = (props: any) => {
 	// when calendar starts show default today's month
 	const { addMonth, updateCurrentMonth } = props;
 	useEffect(() => {
+		console.log('inside of use effect that adds month');
+
 		const todaysMonth = new Date().getMonth();
 		let month: MonthDetails = calendarCreation(todaysMonth);
 		addMonth(month);
