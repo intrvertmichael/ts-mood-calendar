@@ -78,7 +78,10 @@ const Modal: React.FC = (props: any) => {
 					</button>
 				</div>
 
-				<button onClick={() => props.deleteDay()}> clear day </button>
+				<button className='clear-btn' onClick={() => props.deleteDay()}>
+					{' '}
+					clear day{' '}
+				</button>
 			</div>
 		</div>
 	);
