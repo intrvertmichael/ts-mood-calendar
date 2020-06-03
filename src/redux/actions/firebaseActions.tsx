@@ -43,21 +43,15 @@ export const syncFirebase: any = (monthNum: number) => {
 		const firestoreCalendar = getState().firestore.data.userCalendars[
 			firebaseAuth
 		].stored;
-		const areCalendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
+		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
-		if (!areCalendarsEqual) {
+		if (!calendarsEqual) {
 			dispatch({ type: 'FIREBASE_LOADED' });
-
-			console.log(
-				'when first starts this should be blank?',
-				getState().current.timesFirestoreLoaded
-			);
-
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
-			const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
 
 			if (getState().current.timesFirestoreLoaded === 1) {
+				const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
 				firestore
 					.collection('userCalendars')
 					.doc(firebaseAuth)
@@ -67,27 +61,26 @@ export const syncFirebase: any = (monthNum: number) => {
 						email: getState().firebase.auth.email,
 						lastUpdateAt: new Date(),
 					})
-					.then(() => console.log('-> Firestore was synced'))
+					.then(() => console.log(true, 'Firestore was synced'))
 					.catch(() => console.log('Not able to sync Firestore'));
 
 				dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
+				dispatch({ type: 'UPDATE_CURRENT_MONTH', month: cur });
 			} else {
 				firestore
 					.collection('userCalendars')
 					.doc(firebaseAuth)
-					.set({
+					.update({
 						stored: reduxCalendar,
-						displayName: getState().firebase.auth.displayName,
-						email: getState().firebase.auth.email,
 						lastUpdateAt: new Date(),
 					})
-					.then(() => console.log('-> Redux calendar was posted on Firestore'))
-					.catch(() => console.log('Not able to post to Firestore'));
-
-				// dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
+					.then(() => console.log(true, 'updated Firestore'))
+					.catch(() => console.log('Not able to updated Firestore'));
+				dispatch({
+					type: 'UPDATE_CURRENT_MONTH',
+					month: getState().calendar.year2020[`month${monthNum}`],
+				});
 			}
-
-			dispatch({ type: 'UPDATE_CURRENT_MONTH', month: cur });
 		} else {
 		}
 	};

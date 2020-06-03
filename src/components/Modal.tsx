@@ -43,6 +43,9 @@ const Modal: React.FC = (props: any) => {
 		good = 3,
 		excellent = 4,
 	}
+
+	const stroredMoodMessage = makeMoodMessage(storedMood);
+
 	return (
 		<div className='modal-container'>
 			<div className={`modal mood${storedMood}`}>
@@ -52,10 +55,7 @@ const Modal: React.FC = (props: any) => {
 				</button>
 
 				<div className='modal-content'>
-					<p className='date'>
-						{' '}
-						{storedMood !== 0 ? storedMood : 'no number'}{' '}
-					</p>
+					<p className='date'> {stroredMoodMessage} </p>
 					<button className='message' onClick={() => messageClicked()}>
 						{storedMessage !== '' ? storedMessage : 'click here to add why'}
 					</button>
@@ -63,22 +63,18 @@ const Modal: React.FC = (props: any) => {
 
 				<div className='mood-circles'>
 					<button className='mood1' onClick={() => circleClicked(mood.bad)}>
-						{' '}
-						Bad{' '}
+						Bad
 					</button>
 					<button className='mood2' onClick={() => circleClicked(mood.okay)}>
-						{' '}
-						Okay{' '}
+						Okay
 					</button>
 					<button className='mood3' onClick={() => circleClicked(mood.good)}>
-						{' '}
-						Good{' '}
+						Good
 					</button>
 					<button
 						className='mood4'
 						onClick={() => circleClicked(mood.excellent)}>
-						{' '}
-						Excellent{' '}
+						Excellent
 					</button>
 				</div>
 
@@ -86,6 +82,22 @@ const Modal: React.FC = (props: any) => {
 			</div>
 		</div>
 	);
+};
+
+const makeMoodMessage = (moodNum: number): string => {
+	let moodMessage: string;
+	if (moodNum === 1) {
+		moodMessage = "You're feeling bad on this day";
+	} else if (moodNum === 2) {
+		moodMessage = "You're feeling okay on this day";
+	} else if (moodNum === 3) {
+		moodMessage = "You're feeling good on this day";
+	} else if (moodNum === 4) {
+		moodMessage = "You're feeling excellent on this day";
+	} else {
+		moodMessage = "You don't have a mood for this day";
+	}
+	return moodMessage;
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
