@@ -50,7 +50,7 @@ export const syncFirebase: any = (monthNum: number) => {
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
 
-			if (getState().current.timesFirestoreLoaded === 1) {
+			if (getState().current.timesFirestoreLoaded <= 1) {
 				const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
 				firestore
 					.collection('userCalendars')
@@ -76,6 +76,7 @@ export const syncFirebase: any = (monthNum: number) => {
 					})
 					.then(() => console.log(true, 'updated Firestore'))
 					.catch(() => console.log('Not able to updated Firestore'));
+
 				dispatch({
 					type: 'UPDATE_CURRENT_MONTH',
 					month: getState().calendar.year2020[`month${monthNum}`],

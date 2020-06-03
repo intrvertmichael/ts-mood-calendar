@@ -14,7 +14,7 @@ interface HeaderDetails {
 const Header = (props: any) => {
 	return (
 		<div className='header'>
-			<div>
+			<div className='title'>
 				{props.month} | {props.year}
 			</div>
 			<button onClick={() => props.LogOut()}>Log Out</button>

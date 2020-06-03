@@ -1,18 +1,19 @@
-.single-day, .not-day {
-  border-top: 1px solid green;
-  border-right: 1px solid green;
-  width: calc( 100% * (1/7) );
-  height: calc( 100% * (1/6));
-  box-sizing: border-box;
+.single-day,
+.not-day {
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	width: calc(100% * (1 / 7));
+	height: calc(100% * (1 / 6));
+	box-sizing: border-box;
 }
 
-.single-day{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.single-day {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 
 .currentDay {
-  background: #d0e7ba;
+	background: #d0e7ba;
 }

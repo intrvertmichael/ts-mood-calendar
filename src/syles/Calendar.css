@@ -1,15 +1,16 @@
 .calendar {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  border: 2px solid green;
-  overflow: hidden;
-  box-sizing: border-box;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	border: 2px solid black;
+	overflow: hidden;
+	box-sizing: border-box;
+	height: 100%;
+	background: #faf9fa;
 }
 
 .btn {
-  padding: 10px 30px;
-  box-sizing: border-box;
-  margin: auto;
+	padding: 10px 30px;
+	box-sizing: border-box;
+	margin: auto;
 }

@@ -87,13 +87,13 @@ const Modal: React.FC = (props: any) => {
 const makeMoodMessage = (moodNum: number): string => {
 	let moodMessage: string;
 	if (moodNum === 1) {
-		moodMessage = "You're feeling bad on this day";
+		moodMessage = 'bad';
 	} else if (moodNum === 2) {
-		moodMessage = "You're feeling okay on this day";
+		moodMessage = 'okay';
 	} else if (moodNum === 3) {
-		moodMessage = "You're feeling good on this day";
+		moodMessage = 'good';
 	} else if (moodNum === 4) {
-		moodMessage = "You're feeling excellent on this day";
+		moodMessage = 'excellent';
 	} else {
 		moodMessage = "You don't have a mood for this day";
 	}
