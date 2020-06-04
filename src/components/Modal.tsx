@@ -50,8 +50,7 @@ const Modal: React.FC = (props: any) => {
 		<div className='modal-container'>
 			<div className={`modal mood${storedMood}`}>
 				<button className='modal-btn' onClick={() => props.resetCurrent()}>
-					{' '}
-					X{' '}
+					X
 				</button>
 
 				<div className='modal-content'>
@@ -79,8 +78,7 @@ const Modal: React.FC = (props: any) => {
 				</div>
 
 				<button className='clear-btn' onClick={() => props.deleteDay()}>
-					{' '}
-					clear day{' '}
+					clear day
 				</button>
 			</div>
 		</div>

@@ -37,12 +37,12 @@ const Calendar: React.FC = (props: any) => {
 			}
 		} else {
 		}
-	}, [props]);
+	});
 
 	return (
 		<div className='calendar'>
-			<Header month={props.month.name} year={props.year} />
-			<Days month={props.month} />
+			<Header />
+			<Days />
 		</div>
 	);
 };

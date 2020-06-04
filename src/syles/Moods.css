@@ -1,16 +1,16 @@
 .mood1 {
-  background-color: rgb(99, 90, 136);
-  color: rgb(49, 44, 71);
+	background-color: #5b193d;
+	color: #946880;
 }
 .mood2 {
-  background-color: rgb(143, 163, 194);
-  color: rgb(58, 79, 110);
+	background-color: #353fb1;
+	color: #898ec4;
 }
 .mood3 {
-  background-color: rgb(255, 219, 140);
-  color: rgb(87, 69, 32);
+	background-color: #f4851d;
+	color: #ffdabc;
 }
 .mood4 {
-  background-color: rgb(255, 224, 87);
-  color: rgb(109, 96, 37);
+	background-color: #f4b416;
+	color: #fade96;
 }

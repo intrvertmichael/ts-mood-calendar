@@ -23,7 +23,10 @@ const Header = (props: any) => {
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
-	return {};
+	return {
+		month: state.current.month.name,
+		year: state.current.year,
+	};
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
