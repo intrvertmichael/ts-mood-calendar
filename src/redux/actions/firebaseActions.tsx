@@ -45,21 +45,14 @@ export const syncFirebase: any = (monthNum: number) => {
 		].stored;
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
-		// figuring out the issue
-		console.log('-> inside of sync');
-		console.log(getState());
-		console.log(calendarsEqual);
-		console.log(reduxCalendar, firestoreCalendar);
-
 		if (!calendarsEqual) {
-			console.log('inside of not equal');
-
 			dispatch({ type: 'FIREBASE_LOADED' });
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
 
 			if (getState().current.timesFirestoreLoaded <= 1) {
-				const cur: MonthDetails = mergedCalendars.year2020[`month${monthNum}`];
+				const cur: MonthDetails =
+					mergedCalendars.year2020[`month${monthNum}`].num;
 				firestore
 					.collection('userCalendars')
 					.doc(firebaseAuth)
@@ -87,7 +80,7 @@ export const syncFirebase: any = (monthNum: number) => {
 
 				dispatch({
 					type: 'UPDATE_CURRENT_MONTH',
-					month: getState().calendar.year2020[`month${monthNum}`],
+					month: getState().calendar.year2020[`month${monthNum}`].num,
 				});
 			}
 		} else {

@@ -4,7 +4,7 @@ import { CurrentReducerDetails } from '../../components/_reducer_types';
 const initialState = {
 	modalOpen: false,
 	year: 2020,
-	month: {},
+	month: 0,
 	day: null,
 	timesFirestoreLoaded: 0,
 };

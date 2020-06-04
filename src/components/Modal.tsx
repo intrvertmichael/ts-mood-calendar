@@ -102,9 +102,10 @@ const makeMoodMessage = (moodNum: number): string => {
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
+	const month = state.current.month;
 	return {
 		cal: state.calendar.year2020,
-		currentMonth: state.current.month,
+		currentMonth: state.calendar.year2020[`month${month}`],
 		currentDay: state.current.day,
 	};
 };

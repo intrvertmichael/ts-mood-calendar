@@ -23,8 +23,9 @@ const Header = (props: any) => {
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
+	const month = state.current.month;
 	return {
-		month: state.current.month.name,
+		month: state.calendar.year2020[`month${month}`].name,
 		year: state.current.year,
 	};
 };

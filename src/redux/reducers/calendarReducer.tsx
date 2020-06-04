@@ -4,18 +4,7 @@ import _ from 'lodash';
 
 const initialState = {
 	year2020: {
-		month0: {
-			num: 0,
-			name: 'January',
-			length: 31,
-			starts: 3,
-			days: {
-				day1: { mood: 1 },
-				day2: { mood: 2 },
-				day3: { mood: 3 },
-				day4: { mood: 4 },
-			},
-		},
+		month0: { num: 0, name: 'January', length: 31, starts: 3, days: {} },
 		month1: {
 			num: 1,
 			name: 'February',

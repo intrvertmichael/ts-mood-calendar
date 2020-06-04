@@ -10,15 +10,18 @@ export const addMonth: any = (month: MonthDetails) => {
 			monthName: `month${month.num}`,
 			month: month,
 		});
-		// console.log(getState());
 	};
 };
 
 export const addMood: any = (moodNum: number) => {
 	return (dispatch: Dispatch, getState: GetStateDetails) => {
+		const currentMonthNum = getState().current.month;
+
 		dispatch({
 			type: 'CREATE_MOOD',
-			monthName: `month${getState().current.month.num}`,
+			monthName: `month${
+				getState().calendar.year2020[`month${currentMonthNum}`].num
+			}`,
 			dayName: `day${getState().current.day}`,
 			mood: moodNum,
 		});
@@ -27,9 +30,12 @@ export const addMood: any = (moodNum: number) => {
 
 export const addMessage: any = (message: string) => {
 	return (dispatch: Dispatch, getState: GetStateDetails) => {
+		const currentMonthNum = getState().current.month;
 		dispatch({
 			type: 'CREATE_MESSAGE',
-			monthName: `month${getState().current.month.num}`,
+			monthName: `month${
+				getState().calendar.year2020[`month${currentMonthNum}`].name
+			}`,
 			dayName: `day${getState().current.day}`,
 			message: message,
 		});
@@ -39,9 +45,12 @@ export const addMessage: any = (message: string) => {
 // REMOVE
 export const deleteDay: any = () => {
 	return (dispatch: Dispatch, getState: GetStateDetails) => {
+		const currentMonthNum = getState().current.month;
 		dispatch({
 			type: 'DELETE_DAY',
-			monthName: `month${getState().current.month.num}`,
+			monthName: `month${
+				getState().calendar.year2020[`month${currentMonthNum}`].num
+			}`,
 			dayName: `day${getState().current.day}`,
 		});
 	};

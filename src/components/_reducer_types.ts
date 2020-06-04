@@ -41,7 +41,7 @@ export interface CurrentReducerDetails {
 	type: string;
 	modalOpen: boolean;
 	year: number;
-	month: MonthDetails;
+	month: number;
 	day: number;
 	timesFirestoreLoaded: number;
 }

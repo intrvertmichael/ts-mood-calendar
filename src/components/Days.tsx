@@ -10,12 +10,12 @@ const Days = (props: any) => {
 	// figure out calendar size
 	const calendarLength = props.month.starts + props.month.length;
 	console.log(calendarLength);
-	let calendarSize = 42;
+	let calendarSize = 35;
 
 	for (let i = 0; i < calendarSize; i++) {
 		if (
 			i >= props.month.starts &&
-			i <= props.month.length + props.month.starts
+			i < props.month.length + props.month.starts
 		) {
 			daysArray.push(<SingleDay key={i} pos={i} />);
 		} else {
@@ -27,8 +27,9 @@ const Days = (props: any) => {
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
+	const month = state.current.month;
 	return {
-		month: state.current.month,
+		month: state.calendar.year2020[`month${month}`],
 	};
 };
 

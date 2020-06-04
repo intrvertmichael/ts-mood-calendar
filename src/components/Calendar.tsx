@@ -21,17 +21,17 @@ const Calendar: React.FC = (props: any) => {
 	// When calendar starts show default today's month
 	const { addMonth, updateCurrentMonth } = props;
 	useEffect(() => {
-		const todaysMonth = new Date().getMonth();
-		const month: MonthDetails = calendarCreation(todaysMonth);
+		const todaysMonthNum = new Date().getMonth();
+		const month: MonthDetails = calendarCreation(todaysMonthNum);
 		addMonth(month);
-		updateCurrentMonth(month);
+		updateCurrentMonth(month.num);
 	}, [addMonth, updateCurrentMonth]);
 
 	// If firestore is loaded sync it.
 	useEffect(() => {
 		if (props.userCalendars) {
-			if (props.month.num) {
-				props.syncFirebase(props.month.num);
+			if (props.month) {
+				props.syncFirebase(props.month);
 			}
 		} else {
 		}
@@ -48,6 +48,7 @@ const Calendar: React.FC = (props: any) => {
 const mapStateToProps = (state: AppStateDetails) => {
 	console.log('-> Calendar is loaded');
 	console.log('state', state);
+
 	return {
 		year: state.current.year,
 		month: state.current.month,

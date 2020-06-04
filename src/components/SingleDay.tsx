@@ -18,7 +18,7 @@ const SingleDay = (props: any) => {
 		const labeledDaysArray = Object.keys(props.labeledDays);
 		// eslint-disable-next-line array-callback-return
 		labeledDaysArray.map((labeledDay) => {
-			const calendarDay = props.pos - props.month.starts;
+			const calendarDay = props.pos;
 			if (`day${calendarDay}` === labeledDay) {
 				moodNum = props.labeledDays[labeledDay].mood;
 			}
@@ -29,12 +29,9 @@ const SingleDay = (props: any) => {
 
 	let classes = 'single-day ';
 	const currentDay = new Date().getDate();
-	let dayNum: number = 0;
 
 	if (props.pos && props.starts) {
-		dayNum = props.pos - props.starts;
-
-		if (currentDay === dayNum) {
+		if (currentDay === props.pos) {
 			classes += 'currentDay ';
 		}
 		if (mood !== null) {
@@ -43,21 +40,22 @@ const SingleDay = (props: any) => {
 	}
 
 	const dayClicked = () => {
-		props.updateCurrenDay(dayNum);
+		props.updateCurrenDay(props.pos);
 	};
 
 	return (
 		<div className={classes} onClick={() => dayClicked()}>
-			{dayNum > 0 ? dayNum : ''}
+			{props.pos}
 		</div>
 	);
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
+	const month = state.current.month;
 	return {
-		labeledDays: state.current.month.days,
-		month: state.current.month,
-		starts: state.current.month.starts,
+		month: state.calendar.year2020[`month${month}`],
+		labeledDays: state.calendar.year2020[`month${month}`].days,
+		starts: state.calendar.year2020[`month${month}`].starts,
 	};
 };
 
