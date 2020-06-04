@@ -9,8 +9,14 @@ const Days = (props: any) => {
 
 	// figure out calendar size
 	const calendarLength = props.month.starts + props.month.length;
-	console.log(calendarLength);
-	let calendarSize = 35;
+	let calendarSize: number;
+	if (calendarLength <= 28) {
+		calendarSize = 28;
+	} else if (calendarLength <= 35) {
+		calendarSize = 35;
+	} else {
+		calendarSize = 42;
+	}
 
 	for (let i = 0; i < calendarSize; i++) {
 		if (
