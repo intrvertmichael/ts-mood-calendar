@@ -34,7 +34,7 @@ export const addMessage: any = (message: string) => {
 		dispatch({
 			type: 'CREATE_MESSAGE',
 			monthName: `month${
-				getState().calendar.year2020[`month${currentMonthNum}`].name
+				getState().calendar.year2020[`month${currentMonthNum}`].num
 			}`,
 			dayName: `day${getState().current.day}`,
 			message: message,

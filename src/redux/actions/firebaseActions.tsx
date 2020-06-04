@@ -1,6 +1,5 @@
 import { Dispatch } from 'redux';
 import { GetStateDetails } from '../../components/_reducer_types';
-import { MonthDetails } from '../../components/_calendar_types';
 import _ from 'lodash';
 import { mergeDeep } from 'immutable';
 
@@ -32,7 +31,7 @@ export const LogOut: any = () => {
 	};
 };
 
-export const syncFirebase: any = (monthNum: number) => {
+export const syncFirebase: any = () => {
 	return (
 		dispatch: Dispatch,
 		getState: GetStateDetails,
@@ -45,14 +44,15 @@ export const syncFirebase: any = (monthNum: number) => {
 		].stored;
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
+		console.log('inside of calendar equal', calendarsEqual);
 		if (!calendarsEqual) {
 			dispatch({ type: 'FIREBASE_LOADED' });
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
 
 			if (getState().current.timesFirestoreLoaded <= 1) {
-				const cur: MonthDetails =
-					mergedCalendars.year2020[`month${monthNum}`].num;
+				const cur: number =
+					mergedCalendars.year2020[`month${getState().current.month}`].num;
 				firestore
 					.collection('userCalendars')
 					.doc(firebaseAuth)
@@ -80,7 +80,9 @@ export const syncFirebase: any = (monthNum: number) => {
 
 				dispatch({
 					type: 'UPDATE_CURRENT_MONTH',
-					month: getState().calendar.year2020[`month${monthNum}`].num,
+					month: getState().calendar.year2020[
+						`month${getState().current.month}`
+					].num,
 				});
 			}
 		} else {

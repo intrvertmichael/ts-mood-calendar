@@ -4,6 +4,7 @@ import '../syles/Moods.css';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { resetCurrent } from '../redux/actions/currentActions';
+import { syncFirebase } from '../redux/actions/firebaseActions';
 import {
 	addMood,
 	addMessage,
@@ -15,12 +16,16 @@ const Modal: React.FC = (props: any) => {
 	let storedMood: number = 0;
 	let storedMessage: string = '';
 
-	const circleClicked = (moodNum: number) => props.addMood(moodNum);
+	const circleClicked = (moodNum: number) => {
+		props.addMood(moodNum);
+		props.syncFirebase();
+	};
 	const messageClicked = () => {
 		const response = prompt(
 			`what was going on in ${props.currentMonth}/${props.currentDay}`
 		);
 		props.addMessage(response);
+		props.syncFirebase();
 	};
 
 	// get message and mood
@@ -77,7 +82,12 @@ const Modal: React.FC = (props: any) => {
 					</button>
 				</div>
 
-				<button className='clear-btn' onClick={() => props.deleteDay()}>
+				<button
+					className='clear-btn'
+					onClick={() => {
+						props.deleteDay();
+						props.syncFirebase();
+					}}>
 					clear day
 				</button>
 			</div>
@@ -116,6 +126,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 		addMood: (moodNum: number) => dispatch(addMood(moodNum)),
 		addMessage: (message: string) => dispatch(addMessage(message)),
 		deleteDay: () => dispatch(deleteDay()),
+		syncFirebase: () => dispatch(syncFirebase()),
 	};
 };
 

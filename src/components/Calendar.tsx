@@ -31,11 +31,11 @@ const Calendar: React.FC = (props: any) => {
 	useEffect(() => {
 		if (props.userCalendars) {
 			if (props.month) {
-				props.syncFirebase(props.month);
+				props.syncFirebase();
 			}
 		} else {
 		}
-	});
+	}, [props]);
 
 	return (
 		<div className='calendar'>
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 		updateCurrentMonth: (monthNum: number) =>
 			dispatch(updateCurrentMonth(monthNum)),
 		addMonth: (month: MonthDetails) => dispatch(addMonth(month)),
-		syncFirebase: (monthNum: number) => dispatch(syncFirebase(monthNum)),
+		syncFirebase: () => dispatch(syncFirebase()),
 	};
 };
 
