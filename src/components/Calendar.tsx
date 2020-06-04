@@ -29,7 +29,7 @@ const Calendar: React.FC = (props: any) => {
 
 	// If firestore is loaded sync it.
 	useEffect(() => {
-		if (props.firestore.data.userCalendars) {
+		if (props.userCalendars) {
 			if (props.month.num) {
 				props.syncFirebase(props.month.num);
 			}
@@ -52,7 +52,7 @@ const mapStateToProps = (state: AppStateDetails) => {
 		year: state.current.year,
 		month: state.current.month,
 		uid: state.firebase.auth.uid,
-		firestore: state.firestore,
+		userCalendars: state.firestore.data.userCalendars,
 	};
 };
 

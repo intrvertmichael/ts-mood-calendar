@@ -45,7 +45,15 @@ export const syncFirebase: any = (monthNum: number) => {
 		].stored;
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
+		// figuring out the issue
+		console.log('-> inside of sync');
+		console.log(getState());
+		console.log(calendarsEqual);
+		console.log(reduxCalendar, firestoreCalendar);
+
 		if (!calendarsEqual) {
+			console.log('inside of not equal');
+
 			dispatch({ type: 'FIREBASE_LOADED' });
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
