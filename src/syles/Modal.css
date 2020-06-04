@@ -14,11 +14,12 @@
 
 .modal {
 	position: relative;
-	padding: 50px;
+	padding: 20px;
 	box-sizing: border-box;
 	background: #202020;
 	border-radius: 5px;
-	max-width: 600px;
+	max-width: 500px;
+	max-height: 400px;
 	width: 95%;
 	color: white;
 	display: flex;
@@ -64,8 +65,8 @@
 }
 
 .mood-circles button {
-	width: 110px;
-	height: 110px;
+	width: 90px;
+	height: 90px;
 	border-radius: 50%;
 	border: none;
 	font-size: 14px;

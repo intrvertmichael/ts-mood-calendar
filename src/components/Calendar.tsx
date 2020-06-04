@@ -18,18 +18,16 @@ import { syncFirebase } from '../redux/actions/firebaseActions';
 const Calendar: React.FC = (props: any) => {
 	useFirestoreConnect(`userCalendars`);
 
-	// when calendar starts show default today's month
+	// When calendar starts show default today's month
 	const { addMonth, updateCurrentMonth } = props;
 	useEffect(() => {
-		console.log('inside of use effect that adds month');
-
 		const todaysMonth = new Date().getMonth();
-		let month: MonthDetails = calendarCreation(todaysMonth);
+		const month: MonthDetails = calendarCreation(todaysMonth);
 		addMonth(month);
 		updateCurrentMonth(month);
 	}, [addMonth, updateCurrentMonth]);
 
-	// Did firestore get loaded ?
+	// If firestore is loaded sync it.
 	useEffect(() => {
 		if (props.firestore.data.userCalendars) {
 			if (props.month.num) {

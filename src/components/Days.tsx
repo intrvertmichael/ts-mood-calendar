@@ -6,19 +6,22 @@ import { connect } from 'react-redux';
 
 const Days = (props: any) => {
 	let daysArray: JSX.Element[] = [];
-	const calendarSize = 42; // figure out calendar size
+
+	// figure out calendar size
+	const calendarLength = props.month.starts + props.month.length;
+	console.log(calendarLength);
+	let calendarSize = 42;
 
 	for (let i = 0; i < calendarSize; i++) {
-		// going through the days of the month
 		if (
-			i > props.month.starts &&
+			i >= props.month.starts &&
 			i <= props.month.length + props.month.starts
 		) {
-			daysArray.push(<SingleDay key={i} pos={i} starts={props.month.starts} />);
+			daysArray.push(<SingleDay key={i} pos={i} />);
 		} else {
 			daysArray.push(<div className='not-day' key={i} />);
 		}
-	} // end of going through month days
+	}
 
 	return <div className='days'> {daysArray} </div>;
 };

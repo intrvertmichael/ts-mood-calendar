@@ -57,6 +57,7 @@ const mapStateToProps = (state: AppStateDetails) => {
 	return {
 		labeledDays: state.current.month.days,
 		month: state.current.month,
+		starts: state.current.month.starts,
 	};
 };
 
