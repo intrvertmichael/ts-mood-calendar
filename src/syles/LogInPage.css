@@ -1,18 +1,15 @@
 .login {
-  background:red;
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .login-message {
-  background: blue;
-  color: #ffffff;
-  text-align: center;
-  padding: 30px;
+	color: #ffffff;
+	text-align: center;
+	padding: 30px;
 }
 
 .login-btn {
-  /* background: green; */
-  width: 200px;
-  margin: 20px auto;
 }
