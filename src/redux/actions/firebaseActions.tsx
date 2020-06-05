@@ -39,12 +39,16 @@ export const syncFirebase: any = () => {
 	) => {
 		const firebaseAuth: string = getState().firebase.auth.uid;
 		const reduxCalendar = getState().calendar;
-		const firestoreCalendar = getState().firestore.data.userCalendars[
-			firebaseAuth
-		].stored;
+
+		let firestoreCalendar;
+		if (getState().firestore.data.userCalendars[firebaseAuth]) {
+			firestoreCalendar = getState().firestore.data.userCalendars[firebaseAuth]
+				.stored;
+		} else {
+			firestoreCalendar = {};
+		}
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
-		console.log('inside of calendar equal', calendarsEqual);
 		if (!calendarsEqual) {
 			dispatch({ type: 'FIREBASE_LOADED' });
 			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);

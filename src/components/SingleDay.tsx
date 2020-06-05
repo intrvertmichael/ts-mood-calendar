@@ -28,10 +28,12 @@ const SingleDay = (props: any) => {
 	// const mood = props.mood;
 
 	let classes = 'single-day ';
-	const currentDay = new Date().getDate();
+	const date = new Date();
+	const currentDay = date.getDate();
+	const currentMonth = date.getMonth();
 
 	if (props.pos && props.starts) {
-		if (currentDay === props.pos) {
+		if (currentMonth === props.month.num && currentDay === props.pos) {
 			classes += 'currentDay ';
 		}
 		if (mood !== null) {

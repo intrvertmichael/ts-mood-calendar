@@ -23,7 +23,7 @@ const Days = (props: any) => {
 			i >= props.month.starts &&
 			i < props.month.length + props.month.starts
 		) {
-			daysArray.push(<SingleDay key={i} pos={i} />);
+			daysArray.push(<SingleDay key={i} pos={i - props.month.starts + 1} />);
 		} else {
 			daysArray.push(<div className='not-day' key={i} />);
 		}
