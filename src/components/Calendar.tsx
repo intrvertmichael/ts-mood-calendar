@@ -39,8 +39,8 @@ const Calendar: React.FC = (props: any) => {
 
 	return (
 		<div className='calendar'>
-			<Header />
-			<Days />
+			{props.month >= 0 ? <Header /> : ''}
+			{props.month >= 0 ? <Days /> : ''}
 		</div>
 	);
 };

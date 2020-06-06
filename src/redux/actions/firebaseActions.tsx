@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { GetStateDetails } from '../../components/_reducer_types';
 import _ from 'lodash';
-import { mergeDeep } from 'immutable';
+// import { mergeDeep } from 'immutable';
 
 export const LogIn: any = () => {
 	return (
@@ -27,7 +27,11 @@ export const LogOut: any = () => {
 		firebase
 			.auth()
 			.signOut()
-			.then(() => console.log('Signed Out...'));
+			.then(() => {
+				console.log('Signed Out...');
+				dispatch({ type: 'LOG_OUT' });
+				dispatch({ type: 'RESET_APP' });
+			});
 	};
 };
 
@@ -51,26 +55,13 @@ export const syncFirebase: any = () => {
 
 		if (!calendarsEqual) {
 			dispatch({ type: 'FIREBASE_LOADED' });
-			const mergedCalendars: any = mergeDeep(reduxCalendar, firestoreCalendar);
 			const firestore = getFirestore();
 
-			if (getState().current.timesFirestoreLoaded <= 1) {
-				const cur: number =
-					mergedCalendars.year2020[`month${getState().current.month}`].num;
-				firestore
-					.collection('userCalendars')
-					.doc(firebaseAuth)
-					.set({
-						stored: mergedCalendars,
-						displayName: getState().firebase.auth.displayName,
-						email: getState().firebase.auth.email,
-						lastUpdateAt: new Date(),
-					})
-					.then(() => console.log(true, 'Firestore was synced'))
-					.catch(() => console.log('Not able to sync Firestore'));
-
-				dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: mergedCalendars });
-				dispatch({ type: 'UPDATE_CURRENT_MONTH', month: cur });
+			if (
+				getState().current.timesFirestoreLoaded <= 1 &&
+				getState().current.day === null
+			) {
+				dispatch({ type: 'SYNC_WITH_FIREBASE', calendar: firestoreCalendar });
 			} else {
 				firestore
 					.collection('userCalendars')
@@ -81,14 +72,11 @@ export const syncFirebase: any = () => {
 					})
 					.then(() => console.log(true, 'updated Firestore'))
 					.catch(() => console.log('Not able to updated Firestore'));
-
-				dispatch({
-					type: 'UPDATE_CURRENT_MONTH',
-					month: getState().calendar.year2020[
-						`month${getState().current.month}`
-					].num,
-				});
 			}
+			dispatch({
+				type: 'UPDATE_CURRENT_MONTH',
+				month: getState().current.month,
+			});
 		} else {
 		}
 	};

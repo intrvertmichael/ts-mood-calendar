@@ -4,19 +4,19 @@ import _ from 'lodash';
 
 const initialState = {
 	year2020: {
-		month0: { num: 0, name: 'January', length: 31, starts: 3, days: {} },
-		month1: {
-			num: 1,
-			name: 'February',
-			length: 28,
-			starts: 6,
-			days: {
-				day11: { mood: 1 },
-				day12: { mood: 2 },
-				day13: { mood: 3 },
-				day14: { mood: 4 },
-			},
-		},
+		// month0: { num: 0, name: 'January', length: 31, starts: 3, days: {} },
+		// month1: {
+		// 	num: 1,
+		// 	name: 'February',
+		// 	length: 28,
+		// 	starts: 6,
+		// 	days: {
+		// 		day11: { mood: 1 },
+		// 		day12: { mood: 2 },
+		// 		day13: { mood: 3 },
+		// 		day14: { mood: 4 },
+		// 	},
+		// },
 	},
 };
 
@@ -60,6 +60,9 @@ const calendarReducer = (
 
 		case 'SYNC_WITH_FIREBASE':
 			return mergeDeep(state, action.calendar);
+
+		case 'LOG_OUT':
+			return { year2020: {} };
 
 		default:
 			return state;

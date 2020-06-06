@@ -29,6 +29,14 @@ const currentReducer = (
 		case 'RESET_CURRENT':
 			return merge(state, { modalOpen: false, day: null });
 
+		case 'RESET_APP':
+			return merge(state, {
+				modalOpen: false,
+				month: 0,
+				day: null,
+				timesFirestoreLoaded: 0,
+			});
+
 		default:
 			return state;
 	}

@@ -41,7 +41,7 @@ const Header = (props: any) => {
 				</div>
 			) : (
 				<div className='title'>
-					{props.month.name} | {props.year}
+					{props.month ? props.month.name : ''} | {props.year}
 				</div>
 			)}
 
