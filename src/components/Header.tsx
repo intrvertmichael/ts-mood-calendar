@@ -48,13 +48,15 @@ const Header = (props: any) => {
 			<button onClick={() => props.LogOut()}>Log Out</button>
 			<div className={'all-months'}>{allMonthsJSX}</div>
 			<div className='day-labels'>
-				<li>S</li>
-				<li>M</li>
-				<li>T</li>
-				<li>W</li>
-				<li>Th</li>
-				<li>F</li>
-				<li>S</li>
+				<ul>
+					<li>S</li>
+					<li>M</li>
+					<li>T</li>
+					<li>W</li>
+					<li>Th</li>
+					<li>F</li>
+					<li>S</li>
+				</ul>
 			</div>
 		</div>
 	);

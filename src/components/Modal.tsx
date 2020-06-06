@@ -42,14 +42,15 @@ const Modal: React.FC = (props: any) => {
 		}
 	}
 
-	enum mood {
-		bad = 1,
-		okay = 2,
-		good = 3,
-		excellent = 4,
+	let storedMoodMessage: string;
+	if (storedMood) {
+		storedMoodMessage =
+			`You were feeling ` +
+			makeMoodMessage(storedMood) +
+			` on ${props.currentMonth.name} ${props.currentDay}`;
+	} else {
+		storedMoodMessage = "You don't have a mood for this day";
 	}
-
-	const stroredMoodMessage = makeMoodMessage(storedMood);
 
 	return (
 		<div className='modal-container'>
@@ -59,25 +60,23 @@ const Modal: React.FC = (props: any) => {
 				</button>
 
 				<div className='modal-content'>
-					<p className='date'> {stroredMoodMessage} </p>
+					<p className='date'> {storedMoodMessage} </p>
 					<button className='message' onClick={() => messageClicked()}>
 						{storedMessage !== '' ? storedMessage : 'click here to add why'}
 					</button>
 				</div>
 
 				<div className='mood-circles'>
-					<button className='mood1' onClick={() => circleClicked(mood.bad)}>
+					<button className='mood1' onClick={() => circleClicked(1)}>
 						Bad
 					</button>
-					<button className='mood2' onClick={() => circleClicked(mood.okay)}>
+					<button className='mood2' onClick={() => circleClicked(2)}>
 						Okay
 					</button>
-					<button className='mood3' onClick={() => circleClicked(mood.good)}>
+					<button className='mood3' onClick={() => circleClicked(3)}>
 						Good
 					</button>
-					<button
-						className='mood4'
-						onClick={() => circleClicked(mood.excellent)}>
+					<button className='mood4' onClick={() => circleClicked(4)}>
 						Excellent
 					</button>
 				</div>

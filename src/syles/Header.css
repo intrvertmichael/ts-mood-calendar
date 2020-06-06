@@ -1,8 +1,10 @@
 .header {
-	padding-top: 30px;
+	padding-top: 20px;
+	box-sizing: border-box;
 	text-align: center;
-	border: 1px solid black;
-	border-bottom: none;
+	margin: 0px;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
 }
 
 .title {
@@ -26,7 +28,7 @@
 .all-months {
 	background: #f0f0f0;
 	width: 100%;
-	margin: 20px auto 0px auto;
+	margin-top: 20px;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
@@ -46,17 +48,24 @@
 }
 
 .day-labels {
+}
+
+.day-labels ul {
+	margin: 0px;
+	padding: 0px;
 	display: flex;
 	flex-direction: row;
-	border-top: 1px solid black;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	box-sizing: border-box;
 }
+
 .day-labels li {
 	list-style-type: none;
-	width: calc(100% / 7);
+	width: calc(100% * (1 / 7));
 	font-size: 14px;
-	padding: 10px;
-	border-left: 1px solid black;
-}
-.day-labels li:nth-child(1) {
-	border: none;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	box-sizing: border-box;
 }
