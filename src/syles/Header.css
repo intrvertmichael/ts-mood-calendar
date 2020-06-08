@@ -3,7 +3,6 @@
 	box-sizing: border-box;
 	text-align: center;
 	margin: 0px;
-	border-right: 1px solid black;
 	border-left: 1px solid black;
 }
 
@@ -39,16 +38,18 @@
 .all-months li {
 	list-style-type: none;
 	color: #bdbdbd;
-	padding: 30px;
+	padding: 20px;
+	font-size: 20px;
 	cursor: pointer;
+	width: 10%;
 }
 
 .grow {
 	height: auto;
 }
 
-.day-labels {
-}
+/* .day-labels {
+} */
 
 .day-labels ul {
 	margin: 0px;

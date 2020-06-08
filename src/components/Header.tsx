@@ -17,11 +17,13 @@ const Header = (props: any) => {
 	let allMonthsJSX: JSX.Element[] = [];
 	// eslint-disable-next-line array-callback-return
 	allMonthsArray.map((m: any): void => {
-		allMonthsJSX.push(
-			<li key={m[1].num + 10} onClick={() => singleMonthClicked(m[1].num)}>
-				{m[1].name}
-			</li>
-		);
+		if (m[1].num !== props.month.num) {
+			allMonthsJSX.push(
+				<li key={m[1].num + 10} onClick={() => singleMonthClicked(m[1].num)}>
+					{m[1].name}
+				</li>
+			);
+		}
 	});
 
 	const monthsClicked = () => {
@@ -35,7 +37,7 @@ const Header = (props: any) => {
 
 	return (
 		<div className='header'>
-			{allMonthsJSX.length > 2 ? (
+			{allMonthsJSX.length > 0 ? (
 				<div className='clickable-title' onClick={() => monthsClicked()}>
 					{props.month.name} | {props.year}
 				</div>

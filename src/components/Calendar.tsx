@@ -46,8 +46,8 @@ const Calendar: React.FC = (props: any) => {
 };
 
 const mapStateToProps = (state: AppStateDetails) => {
-	console.log('-> Calendar is loaded');
-	console.log('state', state);
+	// console.log('-> Calendar is loaded');
+	// console.log('state', state);
 
 	return {
 		year: state.current.year,
