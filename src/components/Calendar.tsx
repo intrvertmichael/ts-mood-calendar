@@ -15,7 +15,17 @@ import { updateCurrentMonth } from '../redux/actions/currentActions';
 import { addMonth } from '../redux/actions/calendarActions';
 import { syncFirebase } from '../redux/actions/firebaseActions';
 
-const Calendar: React.FC = (props: any) => {
+interface CalendarProps {
+	month: number;
+	year: number;
+	uid: string;
+	userCalendars: {};
+	addMonth: (month: MonthDetails) => void;
+	syncFirebase: () => void;
+	updateCurrentMonth: (monthNum: number) => void;
+}
+
+const Calendar = (props: CalendarProps) => {
 	useFirestoreConnect(`userCalendars`);
 
 	// When calendar starts show default today's month

@@ -11,8 +11,20 @@ import {
 	deleteDay,
 } from '../redux/actions/calendarActions';
 import { AppStateDetails } from './_reducer_types';
+import { MonthDetails, YearDetails } from './_calendar_types';
 
-const Modal: React.FC = (props: any) => {
+interface ModalProps {
+	cal: YearDetails;
+	currentDay: number;
+	currentMonth: MonthDetails;
+	addMessage: (message: string | null) => void;
+	addMood: (mood: number) => void;
+	deleteDay: () => void;
+	resetCurrent: () => void;
+	syncFirebase: () => void;
+}
+
+const Modal = (props: ModalProps) => {
 	let storedMood: number = 0;
 	let storedMessage: string = '';
 
@@ -123,7 +135,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 	return {
 		resetCurrent: () => dispatch(resetCurrent()),
 		addMood: (moodNum: number) => dispatch(addMood(moodNum)),
-		addMessage: (message: string) => dispatch(addMessage(message)),
+		addMessage: (message: string | null) => dispatch(addMessage(message)),
 		deleteDay: () => dispatch(deleteDay()),
 		syncFirebase: () => dispatch(syncFirebase()),
 	};

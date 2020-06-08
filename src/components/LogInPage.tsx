@@ -4,8 +4,16 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import './../syles/LogInPage.css';
 import GoogleButton from 'react-google-button';
+import { AppStateDetails } from './_reducer_types';
 
-const LogInPage = (props: any) => {
+interface LogInPageProps {
+	current: boolean;
+	loggedIn: string;
+	calendar: AppStateDetails;
+	LogIn: () => void;
+}
+
+const LogInPage = (props: LogInPageProps) => {
 	return (
 		<div className='login'>
 			<div className='login-message'>
@@ -19,7 +27,7 @@ const LogInPage = (props: any) => {
 	);
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppStateDetails) => {
 	return {
 		calendar: state,
 		current: state.current.modalOpen,

@@ -1,10 +1,15 @@
 import React from 'react';
 import '../syles/Days.css';
 import { AppStateDetails } from './_reducer_types';
+import { MonthDetails } from './_calendar_types';
 import SingleDay from './SingleDay';
 import { connect } from 'react-redux';
 
-const Days = (props: any) => {
+interface DayProps {
+	month: MonthDetails;
+}
+
+const Days = (props: DayProps) => {
 	let daysArray: JSX.Element[] = [];
 
 	// figure out calendar size

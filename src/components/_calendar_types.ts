@@ -1,22 +1,23 @@
-
 export interface CalendarDetails {
-  year2020:YearDetails
+	year2020: YearDetails;
 }
 
 export interface YearDetails {
-  [key: string]: MonthDetails
+	[key: string]: MonthDetails;
 }
 
 export interface MonthDetails {
-  num:number,
-  name:string,
-  length:number,
-  starts:number,
-  days:object
+	num: number;
+	name: string;
+	length: number;
+	starts: number;
+	days: DayDetails;
 }
 
 export interface DayDetails {
-  day:number,
-  mood:number,
-  message:string
+	[key: string]: {
+		day: number;
+		mood: number;
+		message: string;
+	};
 }

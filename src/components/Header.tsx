@@ -4,19 +4,23 @@ import '../syles/Header.css';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppStateDetails } from './_reducer_types';
+import { YearDetails, MonthDetails } from './_calendar_types';
 import { LogOut } from '../redux/actions/firebaseActions';
 import { updateCurrentMonth } from '../redux/actions/currentActions';
 
-interface HeaderDetails {
-	month: string;
+interface HeaderProps {
+	month: MonthDetails;
+	allMonths: YearDetails;
 	year: number;
+	LogOut: () => void;
+	updateCurrentMonth: (monthNum: number) => void;
 }
 
-const Header = (props: any) => {
+const Header = (props: HeaderProps) => {
 	const allMonthsArray = Object.entries(props.allMonths);
 	let allMonthsJSX: JSX.Element[] = [];
 	// eslint-disable-next-line array-callback-return
-	allMonthsArray.map((m: any): void => {
+	allMonthsArray.map((m: [string, MonthDetails]) => {
 		if (m[1].num !== props.month.num) {
 			allMonthsJSX.push(
 				<li key={m[1].num + 10} onClick={() => singleMonthClicked(m[1].num)}>

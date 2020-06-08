@@ -4,14 +4,17 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { updateCurrenDay } from '../redux/actions/currentActions';
 import { AppStateDetails } from './_reducer_types';
+import { DayDetails, MonthDetails } from './_calendar_types';
 
-interface SingleDayDetails {
-	key: number;
+interface SingleDayProps {
 	pos: number;
 	starts: number;
+	month: MonthDetails;
+	labeledDays: DayDetails;
+	updateCurrentDay: (dayNum: number) => void;
 }
 
-const SingleDay = (props: any) => {
+const SingleDay = (props: SingleDayProps) => {
 	// find if i has a mood or message
 	let moodNum: number = 0;
 	if (props.labeledDays) {
@@ -42,7 +45,7 @@ const SingleDay = (props: any) => {
 	}
 
 	const dayClicked = () => {
-		props.updateCurrenDay(props.pos);
+		props.updateCurrentDay(props.pos);
 	};
 
 	return (
@@ -63,7 +66,7 @@ const mapStateToProps = (state: AppStateDetails) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
 	return {
-		updateCurrenDay: (dayNum: number) => dispatch(updateCurrenDay(dayNum)),
+		updateCurrentDay: (dayNum: number) => dispatch(updateCurrenDay(dayNum)),
 	};
 };
 
