@@ -1,4 +1,21 @@
 .mood1 {
+	background-color: #8888af;
+	color: #2b2a4d;
+}
+.mood2 {
+	background-color: #88a2af;
+	color: #2a3f4a;
+}
+.mood3 {
+	background-color: #a5af88;
+	color: #4d5638;
+}
+.mood4 {
+	background-color: #c2a255;
+	color: #64481c;
+}
+
+/* .mood1 {
 	background-color: #5b193d;
 	color: #946880;
 }
@@ -13,4 +30,4 @@
 .mood4 {
 	background-color: #f4b416;
 	color: #fade96;
-}
+} */

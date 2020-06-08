@@ -74,7 +74,9 @@ const Modal = (props: ModalProps) => {
 				<div className='modal-content'>
 					<p className='date'> {storedMoodMessage} </p>
 					<button className='message' onClick={() => messageClicked()}>
-						{storedMessage !== '' ? storedMessage : 'click here to add why'}
+						{storedMessage !== ''
+							? storedMessage
+							: "What's happening on this day"}
 					</button>
 				</div>
 
