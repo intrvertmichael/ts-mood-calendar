@@ -70,3 +70,9 @@
 	padding-bottom: 5px;
 	box-sizing: border-box;
 }
+
+@media only screen and (max-width: 600px) {
+	.all-months li {
+		width: 50%;
+	}
+}
