@@ -19,7 +19,7 @@
 	background: #202020;
 	border-radius: 5px;
 	max-width: 500px;
-	min-height: 400px;
+	min-height: 300px;
 	width: 95%;
 	color: white;
 	display: flex;
@@ -87,4 +87,19 @@
 	padding: 10px;
 	outline: none;
 	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	.mood-circles button {
+		width: 70px;
+		height: 70px;
+	}
+
+	.modal {
+		font-size: 25px;
+	}
+
+	.modal-btn {
+		font-size: 14px;
+	}
 }
