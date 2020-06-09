@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/typescript-react/static/css/main.38277488.chunk.css",
-    "main.js": "/typescript-react/static/js/main.fea1ffa9.chunk.js",
-    "main.js.map": "/typescript-react/static/js/main.fea1ffa9.chunk.js.map",
-    "runtime-main.js": "/typescript-react/static/js/runtime-main.706c6f00.js",
-    "runtime-main.js.map": "/typescript-react/static/js/runtime-main.706c6f00.js.map",
-    "static/js/2.fcd25713.chunk.js": "/typescript-react/static/js/2.fcd25713.chunk.js",
-    "static/js/2.fcd25713.chunk.js.map": "/typescript-react/static/js/2.fcd25713.chunk.js.map",
-    "index.html": "/typescript-react/index.html",
-    "precache-manifest.103a819bb9714a55bc49361ef22d5da2.js": "/typescript-react/precache-manifest.103a819bb9714a55bc49361ef22d5da2.js",
-    "service-worker.js": "/typescript-react/service-worker.js",
-    "static/css/main.38277488.chunk.css.map": "/typescript-react/static/css/main.38277488.chunk.css.map",
-    "static/js/2.fcd25713.chunk.js.LICENSE.txt": "/typescript-react/static/js/2.fcd25713.chunk.js.LICENSE.txt"
+    "main.css": "/ts-mood-calendar/static/css/main.0bd338b5.chunk.css",
+    "main.js": "/ts-mood-calendar/static/js/main.f8d0a5dd.chunk.js",
+    "main.js.map": "/ts-mood-calendar/static/js/main.f8d0a5dd.chunk.js.map",
+    "runtime-main.js": "/ts-mood-calendar/static/js/runtime-main.29c8de5c.js",
+    "runtime-main.js.map": "/ts-mood-calendar/static/js/runtime-main.29c8de5c.js.map",
+    "static/js/2.fcd25713.chunk.js": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js",
+    "static/js/2.fcd25713.chunk.js.map": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js.map",
+    "index.html": "/ts-mood-calendar/index.html",
+    "precache-manifest.b4dc3e335d44ac8b3dbbc671c962ee89.js": "/ts-mood-calendar/precache-manifest.b4dc3e335d44ac8b3dbbc671c962ee89.js",
+    "service-worker.js": "/ts-mood-calendar/service-worker.js",
+    "static/css/main.0bd338b5.chunk.css.map": "/ts-mood-calendar/static/css/main.0bd338b5.chunk.css.map",
+    "static/js/2.fcd25713.chunk.js.LICENSE.txt": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.706c6f00.js",
+    "static/js/runtime-main.29c8de5c.js",
     "static/js/2.fcd25713.chunk.js",
-    "static/css/main.38277488.chunk.css",
-    "static/js/main.fea1ffa9.chunk.js"
+    "static/css/main.0bd338b5.chunk.css",
+    "static/js/main.f8d0a5dd.chunk.js"
   ]
 }
