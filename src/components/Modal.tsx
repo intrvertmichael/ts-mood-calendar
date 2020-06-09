@@ -34,7 +34,7 @@ const Modal = (props: ModalProps) => {
 	};
 	const messageClicked = () => {
 		const response = prompt(
-			`what was going on in ${props.currentMonth}/${props.currentDay}`
+			`what was going on in ${props.currentMonth.num}/${props.currentDay}`
 		);
 		props.addMessage(response);
 		props.syncFirebase();
