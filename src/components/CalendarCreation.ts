@@ -15,9 +15,5 @@ export const calendarCreation = (num: number): MonthDetails => {
 		{ num: 10, name: 'November', length: 30, starts: 0, days: {} },
 		{ num: 11, name: 'December', length: 31, starts: 2, days: {} },
 	];
-
-	// enter firebase check here
-	// if doesnt exist on firebase then set the defaults to the saved defaults
-
 	return months2020[num];
 };
