@@ -1,5 +1,4 @@
 .header {
-	padding-top: 20px;
 	box-sizing: border-box;
 	text-align: center;
 	margin: 0px;
@@ -14,7 +13,8 @@
 .clickable-title {
 	font-size: 40px;
 	cursor: pointer;
-	padding: 20px;
+	padding: 30px 0px;
+	margin-top: 20px;
 }
 
 .header button {
@@ -69,6 +69,28 @@
 	padding-top: 20px;
 	padding-bottom: 5px;
 	box-sizing: border-box;
+}
+
+.mood-labels,
+.mood-labels ul {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mood-labels ul {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	border-bottom: 1px solid black;
+}
+
+.mood-labels li {
+	list-style-type: none;
+	margin: 0px;
+	padding: 5px 0px;
+	width: 25%;
+	font-size: 16px;
 }
 
 @media only screen and (max-width: 600px) {
