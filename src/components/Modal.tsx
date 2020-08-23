@@ -102,7 +102,7 @@ const Modal = (props: ModalProps) => {
 						props.deleteDay();
 						props.syncFirebase();
 					}}>
-					clear day
+					Reset
 				</button>
 			</div>
 		</div>

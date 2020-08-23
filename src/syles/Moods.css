@@ -1,23 +1,23 @@
 /* bad */
 .mood1 {
-	background-color: #8c8c9e;
+	background-color: #9393e2;
 	color: #2b2a4d;
 }
 
 /* okay */
 .mood2 {
-	background-color: #88a2af;
+	background-color: #8dc6e2;
 	color: #2a3f4a;
 }
 
 /* good */
 .mood3 {
-	background-color: #a9b388;
+	background-color: #c2e061;
 	color: #3f472b;
 }
 
 /* excellent */
 .mood4 {
-	background-color: #e9c45d;
+	background-color: #f7bb33;
 	color: #64481c;
 }
