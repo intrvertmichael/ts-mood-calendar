@@ -14,3 +14,27 @@
 	box-sizing: border-box;
 	margin: auto;
 }
+
+.mood-labels,
+.mood-labels ul {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mood-labels ul {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+}
+
+.mood-labels li {
+	list-style-type: none;
+	margin: 0px;
+	padding: 4px 0px;
+	width: 25%;
+	font-size: 16px;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}

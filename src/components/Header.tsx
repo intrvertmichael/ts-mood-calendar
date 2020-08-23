@@ -41,15 +41,6 @@ const Header = (props: HeaderProps) => {
 
 	return (
 		<div className='header'>
-			<div className='mood-labels'>
-				<ul>
-					<li className='mood4'> Excellent </li>
-					<li className='mood3'> Good </li>
-					<li className='mood2'> Okay </li>
-					<li className='mood1'> Bad </li>
-				</ul>
-			</div>
-
 			{allMonthsJSX.length > 0 ? (
 				<div className='clickable-title' onClick={() => monthsClicked()}>
 					{props.month.name} | {props.year}

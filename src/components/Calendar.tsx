@@ -51,6 +51,18 @@ const Calendar = (props: CalendarProps) => {
 		<div className='calendar'>
 			{props.month >= 0 ? <Header /> : ''}
 			{props.month >= 0 ? <Days /> : ''}
+			{props.month >= 0 ? (
+				<div className='mood-labels'>
+					<ul>
+						<li className='mood1'> Bad </li>
+						<li className='mood2'> Okay </li>
+						<li className='mood3'> Good </li>
+						<li className='mood4'> Excellent </li>
+					</ul>
+				</div>
+			) : (
+				''
+			)}
 		</div>
 	);
 };
