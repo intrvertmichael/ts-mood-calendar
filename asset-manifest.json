@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ts-mood-calendar/static/css/main.11a410dd.chunk.css",
+    "main.css": "/ts-mood-calendar/static/css/main.aeb6e9c1.chunk.css",
     "main.js": "/ts-mood-calendar/static/js/main.ebbb4572.chunk.js",
     "main.js.map": "/ts-mood-calendar/static/js/main.ebbb4572.chunk.js.map",
     "runtime-main.js": "/ts-mood-calendar/static/js/runtime-main.29c8de5c.js",
@@ -8,15 +8,15 @@
     "static/js/2.fcd25713.chunk.js": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js",
     "static/js/2.fcd25713.chunk.js.map": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js.map",
     "index.html": "/ts-mood-calendar/index.html",
-    "precache-manifest.350b089a72303c8d7a9df18c7dd592ac.js": "/ts-mood-calendar/precache-manifest.350b089a72303c8d7a9df18c7dd592ac.js",
+    "precache-manifest.1f04cc1729b6cf3d9c1f70f2554c19b5.js": "/ts-mood-calendar/precache-manifest.1f04cc1729b6cf3d9c1f70f2554c19b5.js",
     "service-worker.js": "/ts-mood-calendar/service-worker.js",
-    "static/css/main.11a410dd.chunk.css.map": "/ts-mood-calendar/static/css/main.11a410dd.chunk.css.map",
+    "static/css/main.aeb6e9c1.chunk.css.map": "/ts-mood-calendar/static/css/main.aeb6e9c1.chunk.css.map",
     "static/js/2.fcd25713.chunk.js.LICENSE.txt": "/ts-mood-calendar/static/js/2.fcd25713.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.29c8de5c.js",
     "static/js/2.fcd25713.chunk.js",
-    "static/css/main.11a410dd.chunk.css",
+    "static/css/main.aeb6e9c1.chunk.css",
     "static/js/main.ebbb4572.chunk.js"
   ]
 }
