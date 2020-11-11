@@ -35,7 +35,7 @@ const SingleDay = (props: SingleDayProps) => {
 	const currentDay = date.getDate();
 	const currentMonth = date.getMonth();
 
-	if (props.pos && props.starts) {
+	if (props.pos && props.starts>=0) {
 		if (currentMonth === props.month.num && currentDay === props.pos) {
 			classes += 'currentDay ';
 		}

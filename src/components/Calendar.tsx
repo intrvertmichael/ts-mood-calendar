@@ -69,7 +69,7 @@ const Calendar = (props: CalendarProps) => {
 
 const mapStateToProps = (state: AppStateDetails) => {
 	// console.log('-> Calendar is loaded');
-	// console.log('state', state);
+	console.log('state', state);
 
 	return {
 		year: state.current.year,
