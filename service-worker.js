@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ts-mood-calendar/precache-manifest.f383cb69912244b537dc54ed97533be3.js"
+  "/ts-mood-calendar/precache-manifest.aacc7f73a69b1f6894a310fe22ad6a32.js"
 );
 
 self.addEventListener('message', (event) => {
