@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fd0c8f702e6b6393a3456f92e48c64e8",
+    "revision": "5022de4a3c6013c97911a4d2fce33720",
     "url": "/ts-mood-calendar/index.html"
   },
   {
