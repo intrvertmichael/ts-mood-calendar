@@ -40,7 +40,7 @@ const Calendar = (props: CalendarProps) => {
 	// If firestore is loaded sync it.
 	useEffect(() => {
 		if (props.userCalendars) {
-			if (props.month) {
+			if (props.month >= 0) {
 				props.syncFirebase();
 			}
 		} else {

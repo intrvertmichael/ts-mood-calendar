@@ -51,6 +51,7 @@ export const syncFirebase: any = () => {
 		} else {
 			firestoreCalendar = {};
 		}
+
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
 
 		if (!calendarsEqual) {
