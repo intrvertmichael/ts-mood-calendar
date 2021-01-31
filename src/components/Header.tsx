@@ -43,11 +43,11 @@ const Header = (props: HeaderProps) => {
 		<div className='header'>
 			{allMonthsJSX.length > 0 ? (
 				<div className='clickable-title' onClick={() => monthsClicked()}>
-					{props.month.name} | {props.year}
+					{props.month.name} | 2021
 				</div>
 			) : (
 				<div className='title'>
-					{props.month ? props.month.name : ''} | {props.year}
+					{props.month ? props.month.name  : ''} | 2021
 				</div>
 			)}
 

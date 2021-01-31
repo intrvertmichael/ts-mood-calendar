@@ -52,7 +52,13 @@ export const syncFirebase: any = () => {
 			firestoreCalendar = {};
 		}
 
+		console.log("- - - - -- - - -")
+		console.log(reduxCalendar)
+		console.log(firestoreCalendar)
+
 		const calendarsEqual = _.isEqual(reduxCalendar, firestoreCalendar);
+
+		console.log(calendarsEqual)
 
 		if (!calendarsEqual) {
 			dispatch({ type: 'FIREBASE_LOADED' });
@@ -78,7 +84,6 @@ export const syncFirebase: any = () => {
 				type: 'UPDATE_CURRENT_MONTH',
 				month: getState().current.month,
 			});
-		} else {
-		}
+		} else {}
 	};
 };
