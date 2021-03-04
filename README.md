@@ -1,7 +1,7 @@
 
 
 ![Moods](https://i.imgur.com/bqzVfWd.png)
-(
+
 See deployed version here ! [Mood Calendar on Github Pages](https://intrvertmichael.github.io/ts-mood-calendar/)
 
 # Mood Calendar
