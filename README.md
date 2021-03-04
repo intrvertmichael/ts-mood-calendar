@@ -1,6 +1,9 @@
 
 
 ![Moods](https://i.imgur.com/bqzVfWd.png)
+(
+See deployed version here ! [Mood Calendar on Github Pages](https://intrvertmichael.github.io/ts-mood-calendar/)
+
 # Mood Calendar
 Mood Calendar is a basic calendar/journal to keep track of your mood. With this project I built transferable skills that I could use in future projects such as familiarity with React, Redux, and Firebase. I made this project originally in Javascript then remade it in Typescript in order to make the project more stable and to learn about this new language. This was my first time using Redux after completing the Modern React with Redux Udemy Course.
 
